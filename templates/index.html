@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="./static/css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <title>DIGIMATHSBOT</title>
+</head>
+<body>
+  
+  <div id="main">
+    <h2>
+      DIGIMATHSBOT: Revolutionizing Mathematics Problem Solving
+    </h2>
+    <div class="info-button"> 
+      <button id="infobutton" onclick="toggleInfo()"> Instructions </button>
+      <div class="info-item" id="infoItem">
+        Instructions:<br>
+        "Iota is conventionally represented by 'j' instead of 'i' in Python."<br>
+        This bot is currently in development to ensure accurate results. Please read the provided instructions carefully for optimal interaction and accurate information.<br>
+        First Choose Option, then Insert Numbers as directed to Obtain Correct Result.<br>
+        1. Operations on Real and Complex Numbers with operators: (+-*/%^) expression type: 'a+b-c*d/e%f^g' <br>
+        2. For Solution of Quadratic equation of type "ax^2+bx+c=0": f(x^2, x) <br>
+        3. For Trigonometric/Inverse Trigonometric & Various Function Solution: f(fun(x)) <br>
+        4. For Solution of Linear Equation in one Variable of type 'ax+b=0': f(x) <br>
+        5. For Solution of Linear Equation in two Variables of type 'ax+by+c=0' & 'dx+ey+h=0': f(x, y) <br>
+        6. For Solution of Linear Equation in three Variables of type 'ax+by+cz+d=0' & 'ex+fy+gz+h=0': f(x, y, z) <br>
+        7. For Solution of Linear Equation in four Variables of type 'ax+by+cz+dw+e=0' & 'fx+gy+hz+=0': f(x, y, z, w)  <br>
+      </div>
+        <button class="openbtn" onclick="openNav()">☰</button> 
+    </div>
+
+  </div>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <h1>Developed by ASHUTOSH SHUKLA</h1>
+    <h3> Contact Me for Feedback</h3>
+    <a href="https://github.com/panditashushukl">Github</a>
+    <a href="https://t.me/panditashushukl">Telegram</a>
+    <a href="https://twitter.com/panditashushukl">Twitter</a>
+    <a href="https://www.instagram.com/panditashushukl/">Instagram</a>
+    <a href="https://www.linkedin.com/in/ashutosh-shukla-b96040226?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Linkedin</a>
+
+  </div>
+  
+  
+  
+  <div class="split-screen"> 
+    <div class="user-input-container">
+      <div class="split-container">
+        <table>
+          <tr>
+       
+        <td><label id="optionsLabel">Operations on Numbers
+        <div id="optionsDiv">
+              <div class="label-strip">
+                  <p><label for="simple">Operations on Real and Complex Numbers</label></p>
+              </div>
+          </div>
+        </label></td>
+        <td><label id="optionsLabel">Functions
+          <div id="optionsDiv">
+                <div class="label-strip">
+                <p> <label for="functions">Functions With Argument</label></p>
+                </div>
+            </div>
+          </label></td>
+          <td> <label id="optionsLabel">Equations
+            <div id="optionsDiv">
+                <div class="label-strip">
+                  <p> <label for="quadratic">Quadratic Equations</label></p>
+                <p><label for="linear1">Linear Equation in one Variable</label></p>
+              <p>   <label for="linear2">Linear Equation in two Variable</label></p>
+            <p>   <label for="linear3">Linear Equation in three Variable</label></p>
+                </div>
+            </div>
+          </label></td>
+      </tr>
+      </table>
+        <div class="top-pane">
+          <div id="result">
+            {% if result %}
+              <h2><pre>{{ result }}</pre></h2>
+            {% endif %}
+          </div>
+        </div>
+        <div class="bottom-pane">
+         
+          
+          <form action="/calculate" method="POST" id="user-input-form">
+          <p>
+          
+           
+            <div class="option-dots">
+              <label class="option-dot">
+                (+-*/%^)
+                <input type="radio" name="calculationType" value="simple" id="simple" onchange="updateFields()">
+                <span data-option="Operations on Numbers" data-index="1"></span>
+              </label>
+              <label class="option-dot">
+                f(arg)
+                <input type="radio" name="calculationType" value="functions" id="functions" onchange="updateFields()">
+                <span data-option="Functions with Argument" data-index="3"></span>
+              </label>
+              <label class="option-dot">
+                f(x^2, x)
+                <input type="radio" name="calculationType" value="quadratic" id="quadratic" onchange="updateFields()">
+                <span data-option="Quadratic Equation" data-index="2"></span>
+              </label>
+              <label class="option-dot">
+                f(x)
+                <input type="radio" name="calculationType" value="linear1" id="linear1" onchange="updateFields()">
+                <span data-option="Linear Equation in one Variable" data-index="4"></span>
+              </label>
+              <label class="option-dot">
+                f(x, y)
+                <input type="radio" name="calculationType" value="linear2" id="linear2" onchange="updateFields()">
+                <span data-option="Linear Equation in two Variables" data-index="5"></span>
+              </label>
+              <label class="option-dot">
+                f(x, y, z)
+                <input type="radio" name="calculationType" value="linear3" id="linear3" onchange="updateFields()">
+                <span data-option="Linear Equation in three Variables" data-index="6"></span>
+              </label>
+            </div>
+          </p> 
+          <div id="inputFieldsContainer">
+            <!-- Dynamic input fields will be generated here -->
+          </div>
+          
+          <button class="submit-button" type="submit" id="Submit" onclick="submitForm()">Submit</button>
+          <button class="delete-button" type="button" id="Delete" onclick="deleteCharacter()"> Delete </button>
+          <button class="clear-button" type="button" id="Clear" onclick="clearInput()"> Clear </button>
+
+        </form>
+      
+        <div class="special-buttons">
+         
+          <table id="buttonTable">
+            <tr><td><button class="button-0" onclick="addCharacter('0')">0</button></td>
+              <td><button class="button-1" onclick="addCharacter('1')">1</button></td>
+            <td> <button class="button-2" onclick="addCharacter('2')">2</button></td>
+            <td> <button class="button-3" onclick="addCharacter('3')">3</button></td>
+            <td> <button class="button-4"  onclick="addCharacter('4')">4</button></td>
+            <td> <button class="button-0" onclick="addCharacter('5')">5</button></td>
+            <td> <button class="button-1" onclick="addCharacter('6')">6</button></td>
+            <td> <button class="button-2" onclick="addCharacter('7')">7</button></td>
+            <td> <button class="button-3" onclick="addCharacter('8')">8</button></td>
+            <td><button class="button-4" onclick="addCharacter('9')">9</button></td></tr>
+          <tr><td><button class="button-0" onclick="addCharacter('=')">=</button></td>
+          <td><button class="button-4" onclick="addCharacter('+')">+</button></td>
+          <td> <button class="button-3" onclick="addCharacter('-')">-</button></td>
+          <td> <button class="button-1" onclick="addCharacter('*')">*</button></td>
+          <td> <button class="button-0" onclick="addCharacter('/')">/</button></td>
+          <td> <button class="button-3" onclick="addCharacter('%')">%</button></td>
+          <td> <button class="button-2" onclick="addCharacter('^2')">^2</button></td>
+          <td> <button class="button-1" onclick="addCharacter('^3')">^3</button></td>
+          <td> <button class="button-5" onclick="addCharacter('^(1/2)')">^(1/2)</button></td>
+          <td><button class="button-0" onclick="addCharacter('√')">√</button></td></tr>
+          <tr><td><button onclick="addCharacter('sin()')">sin()</button></td>
+          <td><button onclick="addCharacter('cos()')">cos()</button></td>
+          <td> <button onclick="addCharacter('tan()')">tan()</button></td>
+          <td> <button onclick="addCharacter('cosec()')">cosec()</button></td>
+          <td> <button onclick="addCharacter('sec()')">sec()</button></td>
+          <td> <button onclick="addCharacter('cot()')">cot()</button></td>
+          <td> <button onclick="addCharacter('log()')">log()</button></td>
+          <td> <button onclick="addCharacter('x^2')">x^2</button></td>
+          <td> <button onclick="addCharacter('x')">x</button></td>
+          <td><button onclick="addCharacter('y')">y</button></td></tr>
+        </table>
+        </div>
+        <button id="toggleButton" onclick="toggleButtons()">DigiKeyboard <i class="fa-solid fa-keyboard"></i></button> 
+        </div>
+      </div>
+    </div>
+    
+    <div class="main-container" id="chat-box">
+    
+      <div class="moving-strip" style="font-weight: bolder;">
+        <p>
+          (: Welcome to DIGIMATSBOT :) ||  Displaying the Graph & Steps below this statement. || (: Thanks for Using DIGIMATHSBOT :)<br>
+          This bot is currently in development to ensure accurate results. Please read the provided instructions carefully for optimal interaction and accurate information.
+        </p>
+      </div>
+      <!-- Display the calculation history -->
+      <div class="calculation-history" id="chat-history">
+       
+        {% for entry in calculation_history %}
+          <div class="calculation-entry">
+            <div style="font-size: larger;">
+              <pre>{{ entry[0] }}</pre>
+              <h5>Steps :</h5>
+              <pre>{{ entry[2] }}</pre>
+              <pre>{{ entry[3] }}</pre>
+                         
+              <h3><pre>{{ entry[1] }}</pre></h3>
+            </div>
+          </div>
+        {% endfor %}
+        {% if img_data %}
+        <img src="data:image/png;base64,{{ img_data }}" alt="Quadratic Plot" width="600" height="400">
+        
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <script src="./static/css/script.js"></script>
+</body>
+</html>

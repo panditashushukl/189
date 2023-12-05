@@ -1,0 +1,523 @@
+ /* Your CSS styles go here */
+ html, body{
+  height: 100%;
+ }
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding-bottom: 0;
+            margin-top: 0px;
+         
+  
+
+        }
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            overflow-y: auto;
+        }
+        .welcome-message {
+            text-align: center;
+            padding: 5px 0;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #13000074;
+        
+        }
+        .chat-container {
+            flex: 1;
+            padding: 20px;
+            border: 0.5px solid paleturquoise;
+            border-radius: 0.5px;
+          
+            display: flex;
+            flex-direction: column; /* Change to column to flex in the top-bottom direction */
+            height: auto;
+            max-height: 100vh; /* Control the maximum height here */
+            overflow-y: auto;
+        }
+       
+
+/* Container for the split-screen layout */
+.split-screen {
+    display: flex;
+            flex: 1;
+            justify-content: calc();
+            height: 100vh; /* 100% of the viewport height */
+            border: 0.5px solid paleturquoise;
+            border-radius: 0.5px;
+          
+}
+
+        .user-input-container {
+            flex-basis: 50%; /* Each side takes up 50% of the available width */
+            padding: 20px;
+            box-sizing: border-box;
+            
+            border-right: 1px solid paleturquoise;
+            padding: 10px;
+            border: 1px solid paleturquoise4;
+            border-radius: 5px;
+           /* Add a background color for contrast */
+            margin: 10px; /* Add some margin for spacing */
+        }
+
+
+/* Chat history container on the left */
+.calculation-history {
+  flex-basis: 0%; /* Each side takes up 50% of the available width */
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 5px;
+ 
+  border-radius: 0.5px;
+  margin: 5px; /* Add some margin for spacing */
+}
+table {
+            border-collapse: collapse;
+        }
+        th {
+            background-color:green;
+            Color:white;
+        }
+        th, td {
+            width:300px;
+            text-align:left;
+            padding: 2px, 1px;
+         
+        }
+        .geeks {
+            border-right:hidden;
+        }
+        .gfg {
+            border-collapse:separate;
+            border-spacing:0 15px;
+        }
+        h1 {
+            color:green;
+        }
+
+  /* Style for the special buttons */
+  .special-buttons {
+    text-align: center;
+  }
+
+  /* Common style for the buttons */
+  .special-buttons button {
+    max-width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    font-weight: bold;
+    background-color: #007BFF;
+    color: #fff;
+    box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
+    border: none;
+    border-radius: 30%;
+    margin: 8px;
+    font-size: 16px;
+  }
+
+  /* Style for the "0" button */
+  .special-buttons .button-0 {
+    width: 60px;
+    height: 40px;
+    background-color: #ff5733;
+    color: #fff;
+  }
+
+  /* Style for the "1" button */
+  .special-buttons .button-1 {
+    width: 60px;
+    height: 40px;
+    background-color: #33ff57;
+    color: #fff;
+  }
+  .special-buttons .button-2 {
+    width: 60px;
+    height: 40px;
+    background-color: #ff33f6;
+    color: #fff;
+  }
+
+  .special-buttons .button-3 {
+    width: 60px;
+    height: 40px;
+    background-color: #334aff;
+    color: #fff;
+  }
+
+  .special-buttons .button-4 {
+    width: 60px;
+    height: 40px;
+    background-color: #0056b3;
+    color: #fff;
+  }
+  .special-buttons .button-5 {
+    width: 75px;
+    height: 40px;
+    background-color: #b30033;
+    color: #fff;
+  }
+
+
+
+  .special-buttons button:hover {
+    background-color: #830606; /* Change the background color on hover */
+    transform: scale(1.1);
+  }
+  /* Add similar styles for other buttons */
+
+
+/* Submit button style */
+.submit-button,.delete-button,.clear-button {
+  width: 115px;
+  height: 48px;
+  background-color: rgba(223, 67, 67, 0.8);
+  box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
+  border: none;
+  border-radius: 10%;
+  margin: 8px;
+  font-size: 16px;
+}
+
+
+
+.submit-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+  }
+  
+        .calculation-entry {
+            margin: 2px 0;
+            padding: 2px;
+            background-color:color-mix(in srgb, color percentage, color percentage);
+            border: 0.5px solid #600606;
+            border-radius: 10px;
+            color-scheme: white;
+        }
+      
+
+        .top-pane {
+           flex :10%;
+            background-color: #f2f2f2;
+            overflow: auto;
+            border: 0.5px solid #1a0202;
+            border-radius: 0.5px;
+            text-align: left;
+            padding: 10px;
+            margin-top:20px;
+            height: 75px;
+            
+        }
+        
+        .bottom-pane {
+            flex: 90%;
+            flex-direction: column;
+        
+            overflow: auto;
+            font-size: larger;
+            
+        }
+
+        /* Modify the .user-input style to add flex and control its height */
+.user-input {
+    flex: 1; /* Takes up all available vertical space */
+    flex-direction: row;
+    min-height: 10px; /* Set a minimum height to ensure visibility */
+    max-height: 20px; /* Set a maximum height if needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow-y: auto; /* Add scroll when content exceeds max-height */
+}
+
+/* Add flex and styling to the variable input interface */
+.inputContainer {
+    flex: 1; /* Takes up all available vertical space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+}
+
+/* Set a minimum height for the variable input interface */
+.variable-input {
+    min-height: 100px; /* Adjust as needed */
+}
+
+/* Set a maximum height for the variable input interface */
+.variable-input {
+    max-height: 200px; /* Adjust as needed */
+}
+
+.option-dots {
+    display: flex;
+   
+    
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    width: 600px; /* Adjust width as needed */
+    
+   
+  }
+  
+  .option-dot {
+    flex-direction: row;
+    background-color: #ace550; /* Premium gold color */
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    border: 3px solid #271e02; /* Golden border */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    font-size: smaller;
+    
+  }
+  
+  .option-dot input[type="radio"] {
+    display: none;
+  }
+
+  
+.option-dot span::before {
+    content: attr(data-option);
+    position: absolute;
+    top: -40px; /* Display above the dot */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffbf00; /* Premium golden color */
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    display: none;
+    z-index: 2;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5); /* Slight shadow */
+  }
+  
+  
+  .option-dot span::after {
+    content: attr(data-option);
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffbf00; /* Premium golden color */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    display: none;
+    z-index: 2;
+    box-shadow: 0px 0px 8px rgba(74, 6, 6, 0.5); /* Slight shadow */
+  }
+  
+  .option-dot:hover span::before {
+    display: block;
+   
+  }
+  
+  .option-dot input[type="radio"]:checked + span::after {
+    top: 28px; /* Display below the dot */
+    display: block;
+    background-color: #007bff; /* Premium selected color */
+  }
+
+.moving-strip {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.moving-strip p {
+  white-space: nowrap;
+  animation: moveText 20s linear infinite;
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-150%);
+  }
+}
+#toggleButton {
+  padding: auto;
+  margin-top: 20px;
+  width: 100px;
+  height: 40px;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bolder;
+  font: small;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+#toggleButton:active{
+  background-color: #264769;
+}
+#toggleButton:hover {
+  background-color: #e1d2da; /* Change the background color on hover */
+}
+#optionsLabel {
+  position: relative;
+  display: inline-block;
+}
+
+#optionsDiv {
+  position: absolute;
+  background: rgb(253, 253, 253);
+  opacity: 0;
+  visibility: hidden;
+  padding: 10px;
+  border: 1px solid #ccc;
+  transition: opacity 0.3s;
+  z-index: 3;
+  top: 100%; /* Position it below the #optionsLabel */
+  left: 0; /* Align with the left edge of #optionsLabel */
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+#optionsLabel .label-strip label:hover {
+  cursor: pointer;
+}
+
+#optionsLabel:hover #optionsDiv {
+  opacity: 100%;
+  visibility: visible;
+  z-index: 4;
+}
+
+.inputFieldsContainer{
+  flex: 1;
+  padding: 5px;
+  margin: 10px 0;
+  resize: none;
+  overflow: hidden;
+  
+}
+
+/* Style for the input field */
+.input-container {
+  width: 98%;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 4px ;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style for the label */
+.input-label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+#main {
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+}
+
+#main h2,h1 {
+  color: rgb(240, 16, 16);
+  text-align: center;
+}
+
+#main button, .info-button button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.info-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.info-item {
+  display: none;
+      position: fixed;
+      top: 30%;
+      left: 69%;
+      transform: translate(-50%, -50%);
+      background-color: pink;
+      border: 1px solid #ccc;
+      padding: 20px;
+      z-index: 1;
+}
+
+.info-item.active {
+  display: block;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  background-color: #111;
+  padding-top: 20px;
+  color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  right: -250px; /* Move the sidebar to the right of the screen */
+  z-index: 2;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar h2 {
+  color: #818181;
+  padding: 8px 8px 8px 32px;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  left: 25px; /* Adjust the close button to the left side of the sidebar */
+  font-size: 36px;
+  margin-left: 50px;
+}
