@@ -471,9 +471,9 @@ table {
 .info-item {
   display: none;
       position: fixed;
-      top: 30%;
+      top: 3%;
       left: 69%;
-      transform: translate(-50%, -50%);
+      transform: translate(-5%, -5%);
       background-color: pink;
       border: 1px solid #ccc;
       padding: 20px;
