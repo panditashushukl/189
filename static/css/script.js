@@ -173,14 +173,6 @@ toggleButton.addEventListener('click', function () {
         localStorage.setItem('buttonTableState', 'hidden');
     }
 });
-function openNav() {
-    document.getElementById("mySidebar").style.right = "0"; /* Open the sidebar from the right side */
-  }
-
-  function closeNav() {
-    document.getElementById("mySidebar").style.right = "-250px"; /* Close the sidebar to the right side */
-  }
-
   function toggleInfo() {
     var infoItem = document.getElementById('infoItem');
     infoItem.classList.toggle('active');
@@ -194,5 +186,34 @@ function openNav() {
       infoItem.classList.remove('active');
     }
   });
+  function toggleSlider(direction) {
+    const leftSlider = document.getElementById('leftSlider');
+    const rightSlider = document.getElementById('rightSlider');
+
+    if (direction === 'left') {
+      leftSlider.style.width = leftSlider.style.width === '100%' ? '0' : '100%';
+      rightSlider.style.width = '0';
+    } else if (direction === 'right') {
+      rightSlider.style.width = rightSlider.style.width === '250px' ? '0' : '250px';
+      leftSlider.style.width = '0';
+    }
+  }
+  function openOptionsModal() {
+const optionsModal = document.getElementById('optionsModal');
+optionsModal.style.display = 'block';
+}
+
+  function closeOptionsModal() {
+    const optionsModal = document.getElementById('optionsModal');
+    optionsModal.style.display = 'none';
+  }
+
+  // Close the modal if the user clicks outside of it
+  window.onclick = function (event) {
+    const optionsModal = document.getElementById('optionsModal');
+    if (event.target === optionsModal) {
+      optionsModal.style.display = 'none';
+    }
+  };
   // Call the loadSelectedOption function when the page loads
 window.addEventListener('load', loadSelectedOption);
