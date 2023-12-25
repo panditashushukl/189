@@ -21,12 +21,6 @@ h3 {
   margin: 0;
 }
 
-.slider-button {
-  background-color: #d8e6d9;
-  color: white;
-  cursor: pointer;
-  border: none;
-}
 
 .left-slider,
 .right-slider {
@@ -128,25 +122,6 @@ table {
     text-align: center;
   }
 
-  /* Common style for the buttons */
-  .special-buttons button {
-    max-width: 150px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    text-align: center;
-    font-weight: bold;
-    background-color: #007BFF;
-    color: #fff;
-    box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
-    border: none;
-    border-radius: 30%;
-    margin: 8px;
-    font-size: 16px;
-  }
-
   .special-buttons button:hover {
     background-color: #830606; /* Change the background color on hover */
     transform: scale(1.1);
@@ -155,9 +130,7 @@ table {
 
 
 /* Submit button style */
-.submit-button,.delete-button,.clear-button {
-  width: 115px;
-  height: 48px;
+.submit-button,.delete-button,.clear-button ,.toogle-buttons,.option-button{
   background-color: rgba(223, 67, 67, 0.8);
   box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
   border: none;
@@ -165,13 +138,44 @@ table {
   margin: 8px;
   font-size: 16px;
 }
+.submit-button{
+width: 30px;
+height: 25px;
+}
 
+.clear-button:hover::before {
+  content: "Clear";
+  display: block;
+  position: absolute;
+  top: 50%; /* Adjust the positioning as needed */
+  left: 50%; /* Adjust the positioning as needed */
+  transform: translate(-50%, -50%);
+  color: white; /* Adjust the text color */
+}
 
-
+.delete-button:hover::before {
+  content: "Delete";
+  display: block;
+  position: absolute;
+  top: 50%; /* Adjust the positioning as needed */
+  left: 50%; /* Adjust the positioning as needed */
+  transform: translate(-50%, -50%);
+  color: white; /* Adjust the text color */
+}
 .submit-button:hover {
   background-color: #0056b3;
   transform: scale(1.1);
   }
+.submit-button:hover::before {
+  content: "Submit";
+  display: block;
+  position: absolute;
+  top: 50%; /* Adjust the positioning as needed */
+  left: 50%; /* Adjust the positioning as needed */
+  transform: translate(-50%, -50%);
+  color: rgb(106, 4, 4); /* Adjust the text color */
+}
+
   
         .calculation-entry {
             margin: 2px 0;
@@ -196,7 +200,7 @@ table {
 .option-dots {
     display: flex;
     align-items: center;
-    margin-top: 5px;
+    margin: 50px;
   }
   
   .option-dot {
@@ -280,23 +284,23 @@ table {
 }
 #toggleButton {
   padding: auto;
-  margin-top: 20px;
-  width: 100px;
-  height: 40px;
-  background-color: #ffffff;
-  color: #000000;
-  font-weight: bolder;
-  font: small;
-  border: none;
-  border-radius: 5px;
+  margin: 20px;
+  background-color: #e6b0ee;
+  color: #970b0b;
   cursor: pointer;
 
 }
 #toggleButton:active{
-  background-color: #264769;
+  background-color: #3e78b2;
 }
 #toggleButton:hover {
-  background-color: #e1d2da; /* Change the background color on hover */
+  background-color: #bb0868; /* Change the background color on hover */
+}
+#toggleButton:hover::before {
+  content: "Display / Hide Keyboard";
+  display: block;
+  position: absolute;
+  color: rgb(0, 0, 0); /* Adjust the text color */
 }
 #optionsLabel {
   position: relative;

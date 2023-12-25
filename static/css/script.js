@@ -1,4 +1,5 @@
 let selectedInputField = null;
+
 function updateFields() {
     const radioOptions = document.getElementsByName('calculationType');
     let selectedOption = null;
@@ -20,8 +21,7 @@ function updateFields() {
         "linear1": "Equation of form ax+b=0",
         "linear2": "Equation of form ax+by+c=0",
         "linear3": "Equation of form ax+by+cz+d=0",
-        "linear4": "Equation of form ax+by+cz+dw+e=0",
-        // Add more options and placeholders as needed
+        // options and placeholders 
     };
 
     if (selectedOption === "quadratic" || selectedOption === "simple" || selectedOption === "functions") {
@@ -91,27 +91,39 @@ function addCharacter(character) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Call the loadSelectedOption function when the DOM is fully loaded
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        loadSelectedOption();
+        // Update input fields based on the selected option
+        updateFields();
+    } else {
+        document.addEventListener('DOMContentLoaded', function () {
+            loadSelectedOption();
+            // Update input fields based on the selected option
+            updateFields();
+        });
+    }
+});
 
-// Function to retrieve the previously selected option from localStorage
+
 function loadSelectedOption() {
     const selectedOption = localStorage.getItem('selectedOption');
+    const radioOptions = document.querySelectorAll('[name="calculationType"]');
+
     if (selectedOption) {
-        const radioOptions = document.getElementsByName('calculationType');
         radioOptions.forEach(option => {
             if (option.value === selectedOption) {
                 option.checked = true;
             }
         });
-        // Update the input fields based on the selected option
-        updateFields();
     } else {
         // If no option is stored, set a default option here
         // For example, you can set the first option as the default:
         radioOptions[0].checked = true;
-        // Update the input fields based on the default option
-        updateFields();
     }
 }
+
 
 function submitForm() {
     const inputFields = document.querySelectorAll('.user-input-container');
@@ -215,5 +227,19 @@ optionsModal.style.display = 'block';
       optionsModal.style.display = 'none';
     }
   };
+
+
+document.getElementById("stepsButton").addEventListener("click", function() {
+    toggleContent('stepsContent');
+});
+
+function toggleContent(contentId) {
+    var content = document.getElementById(contentId);
+    if (content.style.display === "none") {
+        content.style.display = "block";
+    } else {
+        content.style.display = "none";
+    }
+}
   // Call the loadSelectedOption function when the page loads
 window.addEventListener('load', loadSelectedOption);

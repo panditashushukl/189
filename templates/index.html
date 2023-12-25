@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="./static/css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <title>Bhaskaracharya's Insight</title>
 </head>
@@ -14,17 +13,17 @@
     <div>
     <button class="slider-button left-button" onclick="toggleSlider('left')">StepsHistory</button>
     </div>
-    <h3>Bhaskaracharya's Insight: Transforming Math Horizons</h3>
+    <h3>Bhaskaracharya's Insight: Transforming Maths Horizons</h3>
     <div>
     <button class="slider-button right-button" onclick="toggleSlider('right')">About</button>
-    <button class="slider-button" onclick="openOptionsModal()">Options</button>
+    <button id="infobutton" onclick="toggleInfo()"> Instructions </button> 
   </div>
   </div>
 
   <!-- Left Slider -->
   <div class="slider left-slider" id="leftSlider">
     <div>
-    <button class="close-button" onclick="toggleSlider('left')">Close</button>
+    <button class="close-button" onclick="toggleSlider('left')">&#10006;</button>
     </div>
     <!-- Content for the left slider -->
           <!-- Display the calculation history -->
@@ -50,8 +49,7 @@
   
   <!-- Right Slider -->
   <div class="slider right-slider" id="rightSlider">
-    <button class="close-button" onclick="toggleSlider('right')">Close</button>
-    <button id="infobutton" onclick="toggleInfo()"> Instructions </button> 
+    <button class="close-button" onclick="toggleSlider('right')">&#10006;</button>
     <!-- Content for the right slider -->
         <h1>Developed by ASHUTOSH SHUKLA</h1>
         <h3> Contact Me for Feedback</h3>
@@ -70,7 +68,7 @@
     <div class="info-item" id="infoItem">
       Instructions:<br>
       "Iota is conventionally represented by 'j' instead of 'i' in Python."<br>
-      This bot is currently in development to ensure accurate results. Please read the provided instructions carefully for optimal interaction and accurate information.<br>
+      This website is currently in development to ensure accurate results. Please read the provided instructions carefully for optimal interaction and accurate information.<br>
       First Choose Option, then Insert Numbers as directed to Obtain Correct Result.<br>
       1. Operations on Real and Complex Numbers with operators: (+-*/%^) expression type: 'a+b-c*d/e%f^g' <br>
       2. For Solution of Quadratic equation of type "ax^2+bx+c=0": f(x^2, x) <br>
@@ -111,14 +109,11 @@
           </label></td>
       </tr>
       </table>
+
         <div class="result-pane">
-          <div id="result">
-            {% if result %}
-              <h2><pre>{{ result }}</pre></h2>
-            {% endif %}
-          </div>
-        </div>
-          <form action="/calculate" method="POST" id="user-input-form">
+        <button class="option-button" onclick="openOptionsModal()">Click to Choose an Option for Input</button>
+        <button class="toggle-button" id="toggleButton" onclick="toggleButtons()">&#x2328;</button> 
+          <form action="/calculate" method="POST" id="user-input-form" >
             <div class="modal" id="optionsModal">
               <div class="modal-content">
                 <span class="close-button" onclick="closeOptionsModal()">&times;</span>
@@ -126,32 +121,32 @@
                 <div class="option-dots">
                   <label class="option-dot">
                     (+-*/%^)
-                    <input type="radio" name="calculationType" value="simple" id="simple" onchange="updateFields()">
+                    <input type="radio" name="calculationType" value="simple" id="simple" onclick="updateFields()" checked>
                     <span data-option="Operations on Numbers" data-index="1"></span>
                   </label>
                   <label class="option-dot">
                     f(arg)
-                    <input type="radio" name="calculationType" value="functions" id="functions" onchange="updateFields()">
+                    <input type="radio" name="calculationType" value="functions" id="functions" onclick="updateFields()">
                     <span data-option="Functions with Argument" data-index="3"></span>
                   </label>
                   <label class="option-dot">
                     f(x^2, x)
-                    <input type="radio" name="calculationType" value="quadratic" id="quadratic" onchange="updateFields()">
+                    <input type="radio" name="calculationType" value="quadratic" id="quadratic" onclick="updateFields()">
                     <span data-option="Quadratic Equation" data-index="2"></span>
                   </label>
                   <label class="option-dot">
                     f(x)
-                    <input type="radio" name="calculationType" value="linear1" id="linear1" onchange="updateFields()">
+                    <input type="radio" name="calculationType" value="linear1" id="linear1" onclick="updateFields()">
                     <span data-option="Linear Equation in one Variable" data-index="4"></span>
                   </label>
                   <label class="option-dot">
                     f(x, y)
-                    <input type="radio" name="calculationType" value="linear2" id="linear2" onchange="updateFields()">
+                    <input type="radio" name="calculationType" value="linear2" id="linear2" onclick="updateFields()">
                     <span data-option="Linear Equation in two Variables" data-index="5"></span>
                   </label>
                   <label class="option-dot">
                     f(x, y, z)
-                    <input type="radio" name="calculationType" value="linear3" id="linear3" onchange="updateFields()">
+                    <input type="radio" name="calculationType" value="linear3" id="linear3" onclick="updateFields()">
                     <span data-option="Linear Equation in three Variables" data-index="6"></span>
                   </label>
                 </div>
@@ -160,18 +155,17 @@
           <div id="inputFieldsContainer">
             <!-- Dynamic input fields will be generated here -->
           </div>
-          
-          <button class="submit-button" type="submit" id="Submit" onclick="submitForm()">Submit</button>
-          <button class="delete-button" type="button" id="Delete" onclick="deleteCharacter()"> Delete </button>
-          <button class="clear-button" type="button" id="Clear" onclick="clearInput()"> Clear </button>
-
+          <button class="submit-button" type="submit" id="Submit" onclick="submitForm()">&#9654; </button>
         </form>
-      
+        
+        
         <div class="special-buttons">
          
           <table id="buttonTable">
-            <tr><td><button class="button-0" onclick="addCharacter('0')">0</button></td>
-              <td><button class="button-1" onclick="addCharacter('1')">1</button></td>
+
+            <tr> 
+            <td><button class="button-0" onclick="addCharacter('0')">0</button></td>
+            <td><button class="button-1" onclick="addCharacter('1')">1</button></td>
             <td> <button class="button-2" onclick="addCharacter('2')">2</button></td>
             <td> <button class="button-3" onclick="addCharacter('3')">3</button></td>
             <td> <button class="button-4"  onclick="addCharacter('4')">4</button></td>
@@ -179,7 +173,9 @@
             <td> <button class="button-1" onclick="addCharacter('6')">6</button></td>
             <td> <button class="button-2" onclick="addCharacter('7')">7</button></td>
             <td> <button class="button-3" onclick="addCharacter('8')">8</button></td>
-            <td><button class="button-4" onclick="addCharacter('9')">9</button></td></tr>
+            <td><button class="button-4" onclick="addCharacter('9')">9</button></td>
+            <td><button class="delete-button" type="button" id="Delete" onclick="deleteCharacter()"> &#10006; </button></td>
+            </tr>
           <tr><td><button class="button-0" onclick="addCharacter('=')">=</button></td>
           <td><button class="button-4" onclick="addCharacter('+')">+</button></td>
           <td> <button class="button-3" onclick="addCharacter('-')">-</button></td>
@@ -189,7 +185,8 @@
           <td> <button class="button-2" onclick="addCharacter('^2')">^2</button></td>
           <td> <button class="button-1" onclick="addCharacter('^3')">^3</button></td>
           <td> <button class="button-5" onclick="addCharacter('^(1/2)')">^(1/2)</button></td>
-          <td><button class="button-0" onclick="addCharacter('√')">√</button></td></tr>
+          <td><button class="button-0" onclick="addCharacter('√')">√</button></td>
+          <td><button class="clear-button" type="button" id="Clear" onclick="clearInput()"> &#8630; </button></td> </tr>
           <tr><td><button onclick="addCharacter('sin()')">sin()</button></td>
           <td><button onclick="addCharacter('cos()')">cos()</button></td>
           <td> <button onclick="addCharacter('tan()')">tan()</button></td>
@@ -202,24 +199,44 @@
           <td><button onclick="addCharacter('y')">y</button></td></tr>
         </table>
         </div>
-        <button id="toggleButton" onclick="toggleButtons()">Keyboard <i class="fa-solid fa-keyboard"></i></button> 
         </div>
    
-    
+        <div id="result">
+          {% if result %}
+            <h2><pre>{{ result }}</pre></h2>
+          {% endif %}
+        </div>
+      </div>
+      <button class="toogle-buttons" onclick="toggleContent('stepsContent')">Show/Hide Steps</button>
+      <div id="stepsContent" class="steps-content">
+        {% for entry in chat_history %}
+            <div class="entry">
+                <pre>{{ entry[0] }}</pre>
+                <h5>Steps :</h5>
+                <pre>{{ entry[2] }}</pre>
+                <pre>{{ entry[3] }}</pre>
+                <h3><pre>{{ entry[1] }}</pre></h3>
+            </div>
+        {% endfor %}
+      </div>
+                <div id="graphContent" class="graph-content">
+                  {% if img_data %}
+                      <img src="data:image/png;base64,{{ img_data }}" alt="Quadratic Plot" width="500" height="300">
+                  {% endif %}
+              </div>
+          
     <div class="main-container" id="chat-box">
     
       <div class="moving-strip" style="font-weight: bolder;">
         <p>
-          (: Welcome to "Bhaskaracharya's Insight" :) ||  Displaying the Graph below this statement. || (: Thanks for Using "Bhaskaracharya's Insight" :)<br>
-          This bot is currently in development to ensure accurate results. Please read the provided instructions carefully for optimal interaction and accurate information.
+          (: Welcome to "Bhaskaracharya's Insight" :) || This website is currently in development || <br>
+          || Please read the provided instructions carefully for optimal interaction and accurate information.||<br>
+          (: Thanks for Using "Bhaskaracharya's Insight: Transforming Maths Horizons" :)
         </p>
       </div>
 
   </div>
-  {% if img_data %}
-  <img src="data:image/png;base64,{{ img_data }}" alt="Quadratic Plot" width="600" height="400">
-  
-  {% endif %}
+    
 </div>
   <script src="./static/css/script.js"></script>
 </body>
