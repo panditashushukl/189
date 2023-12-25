@@ -11,9 +11,9 @@
   <!-- Fixed Top Pane -->
   <div class="top-pane">
     <div>
-    <button class="slider-button left-button" onclick="toggleSlider('left')">StepsHistory</button>
+    <button class="slider-button left-button" onclick="toggleSlider('left')">Steps History</button>
     </div>
-    <h3>Bhaskaracharya's Insight: Transforming Maths Horizons</h3>
+    <h4>Bhaskaracharya's Insight: Transforming Maths Horizons</h4>
     <div>
     <button class="slider-button right-button" onclick="toggleSlider('right')">About</button>
     <button id="infobutton" onclick="toggleInfo()"> Instructions </button> 
@@ -111,8 +111,8 @@
       </table>
 
         <div class="result-pane">
-        <button class="option-button" onclick="openOptionsModal()">Click to Choose an Option for Input</button>
-        <button class="toggle-button" id="toggleButton" onclick="toggleButtons()">&#x2328;</button> 
+          <button class="option-button" onclick="openOptionsModal()">Click to Choose Option</button>
+          <button class="toggle-button" id="toggleButton" onclick="toggleButtons()">&#x2328;</button> 
           <form action="/calculate" method="POST" id="user-input-form" >
             <div class="modal" id="optionsModal">
               <div class="modal-content">
@@ -221,7 +221,7 @@
       </div>
                 <div id="graphContent" class="graph-content">
                   {% if img_data %}
-                      <img src="data:image/png;base64,{{ img_data }}" alt="Quadratic Plot" width="500" height="300">
+                      <img src="data:image/png;base64,{{ img_data }}" alt="Quadratic Plot" width="80%" height="60%">
                   {% endif %}
               </div>
           
