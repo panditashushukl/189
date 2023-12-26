@@ -447,3 +447,11 @@ width: 40px;
   width: auto;
   height: auto;
 }
+#selectedOption {
+  font-size: x-small;
+  margin: 20px;
+  border: yellow;
+  border-radius: 2px;
+  background: aliceblue;
+  color: red;
+}

@@ -6,6 +6,8 @@ function updateFields() {
     radioOptions.forEach(option => {
         if (option.checked) {
             selectedOption = option.value;
+            var labelElement = document.querySelector("label[for='" + option.id + "']");
+            document.getElementById("selectedOption").innerHTML = "Selected Option: " + labelElement.innerHTML;
         }
     });
 
