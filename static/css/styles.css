@@ -38,6 +38,7 @@
   .output-container{
     flex-direction: column;
   }
+
 }
 .upper-pane {
   display: flex;
@@ -443,6 +444,6 @@ width: 40px;
 }
 
 .graph-content{
-  width: 80%;
-  height: 60%;
+  width: auto;
+  height: auto;
 }
