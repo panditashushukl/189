@@ -2,19 +2,47 @@
  body {
   margin: 0;
   font-family: Arial, sans-serif;
+  text-align: center;
 }
 
 .top-pane {
   background-color: #333;
-  color: #fff;
-  text-align: center;
+  color: #d79494;
   padding: 5px;
   position: fixed;
   width: 100%;
   top: 0;
-  display: flex;
-  justify-content: space-between;
+  height: 40px;
   z-index: 5;
+}
+@media (max-width: 650px) {
+  .top-pane {
+    font-size: x-small;
+    height: 60px;
+  }
+  .infobutton,.slider-right-button,.slider-left-button{
+    font-size: xx-small;
+  }
+  .input-pane{
+    flex-direction: column;
+  }
+  .option-button{
+    font-size: x-small;
+  }
+  #inputFieldsContainer{
+    font-size: x-small;
+  }
+  
+}
+@media(max-width:1000px) {
+  .output-container{
+    flex-direction: column;
+  }
+}
+.upper-pane {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 h4 {
@@ -98,18 +126,18 @@ h4 {
   padding: 5px;
   border-radius: 0.5px;
   margin: 5px; 
+  text-align: justify;
 }
 table {
             border-collapse: collapse;
+
         }
         th {
             background-color:green;
             Color:white;
         }
         th, td {
-            width:300px;
-            text-align:left;
-            padding: 2px, 1px;
+            width:200px;
          
         }
         .geeks {
@@ -123,6 +151,8 @@ table {
   /* Style for the special buttons */
   .special-buttons {
     text-align: center;
+    background-color: #ccc;
+    overflow-x: auto;
   }
 
   .special-buttons button:hover {
@@ -134,16 +164,14 @@ table {
 
 /* Submit button style */
 .submit-button,.delete-button,.clear-button ,.toogle-buttons,.option-button{
-  background-color: rgba(223, 67, 67, 0.8);
   box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
   border: none;
   border-radius: 10%;
   margin: 8px;
-  font-size: 16px;
+  font-size: small;
 }
 .submit-button{
-width: 30px;
-height: 25px;
+width: 40px;
 }
 
 
@@ -190,17 +218,26 @@ height: 25px;
             color-scheme: white;
         }
       
-        .user-input-container{
+        .main-content{
           margin-top:50px;
 
         }
-        .result-pane {
-            background-color: #f2f2f2;
-            text-align: left;
-            
+        @media (max-width: 650px) {
+          .main-content{
+            margin-top:70px;
+  
+          }
         }
 
+        .input-pane {
+            background-color: #f2f2f2;
+            display: flex;   
+        }
 
+#user-input-form{
+  display: flex;
+  flex : 90%;
+}
 .option-dots {
     display: flex;
     align-items: center;
@@ -214,7 +251,8 @@ height: 25px;
     transition: background-color 0.3s;
     position: relative;
     border: 3px solid #271e02;
-    font-size:x-small;
+    font-size:small;
+    white-space: nowrap;
   }
   
   .option-dot input[type="radio"] {
@@ -270,6 +308,7 @@ height: 25px;
   width: 100%;
   overflow: hidden;
   position: relative;
+  margin-bottom: 100px;
   z-index: 1;
 }
 
@@ -316,12 +355,10 @@ height: 25px;
   background: rgb(253, 253, 253);
   opacity: 0;
   visibility: hidden;
-  padding: 10px;
+  padding: 1px;
   border: 1px solid #ccc;
   transition: opacity 0.3s;
-  top: 100%; /* Position it below the #optionsLabel */
-  left: 0; /* Align with the left edge of #optionsLabel */
-  white-space: nowrap; /* Prevent line breaks */
+  white-space: nowrap; 
 }
 
 #optionsLabel .label-strip label:hover {
@@ -336,14 +373,34 @@ height: 25px;
 
 
 /* Style for the input field */
-.input-container {
-  width: 80%;
-  padding: 5px;
-  margin: 5px;
+.input-area {
+  width: 100%;
+  padding: 2px;
+  margin: 2px;
   border: 2px solid #ccc;
-  border-radius: 5px;
+  border-radius: 2px;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
 }
-
+#inputFieldsContainer{
+  flex:90% ;
+}
+.input-container{
+  width: 80%;
+  padding: 2px;
+  margin: 2px;
+  border: 2px solid #f19292;
+  border-radius: 2px;
+}
+.output-container{
+  text-align: justify;
+  margin: 25px;
+  border: #333;
+  border-radius: 2px;
+  background-color: #0000000a;
+  display: flex;
+}
 /* Style for the label */
 .input-label {
   display: block;
@@ -375,7 +432,7 @@ height: 25px;
       position:absolute;
       margin: auto;
       padding: auto;
-      background-color: #fefefe;
+      background-color: #ffcfcf;;
       padding: 20px;
       border-radius: 8px;
       z-index: 10;
@@ -383,43 +440,4 @@ height: 25px;
 
 .info-item.active {
   display: block;
-}
-
-.sidebar {
-  width: 250px;
-  height: 100%;
-  position: fixed;
-  background-color: #111;
-  padding-top: 20px;
-  color: white;
-  overflow-x: hidden;
-  transition: 0.5s;
-  right: -250px;
-  z-index: 2;
-}
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-.sidebar h2 {
-  color: #818181;
-  padding: 8px 8px 8px 32px;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  left: 25px; /* Adjust the close button to the left side of the sidebar */
-  font-size: 36px;
-  margin-left: 5px;
 }
