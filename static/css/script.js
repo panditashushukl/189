@@ -165,28 +165,6 @@ function sendDataToServer() {
         console.error('Error:', error);
     });
 }
-const buttonTable = document.getElementById('buttonTable');
-const toggleButton = document.getElementById('toggleButton');
-
-// Check if there's a saved state in localStorage
-const storedState = localStorage.getItem('buttonTableState');
-if (storedState === 'visible') {
-    buttonTable.style.display = 'table';
-} else {
-    buttonTable.style.display = 'none';
-}
-
-toggleButton.addEventListener('click', function () {
-    if (buttonTable.style.display === 'none') {
-        buttonTable.style.display = 'table';
-        // Save the state to localStorage
-        localStorage.setItem('buttonTableState', 'visible');
-    } else {
-        buttonTable.style.display = 'none';
-        // Save the state to localStorage
-        localStorage.setItem('buttonTableState', 'hidden');
-    }
-});
   function toggleInfo() {
     var infoItem = document.getElementById('infoItem');
     infoItem.classList.toggle('active');
@@ -237,8 +215,8 @@ document.getElementById("stepsButton").addEventListener("click", function() {
 
 function toggleContent(contentId) {
     var content = document.getElementById(contentId);
-    if (content.style.display === "none") {
-        content.style.display = "block";
+    if (content.style.display === "none"|| content.style.display === "") {
+        content.style.display = "grid";
     } else {
         content.style.display = "none";
     }

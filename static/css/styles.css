@@ -32,13 +32,21 @@
   #inputFieldsContainer{
     font-size: x-small;
   }
-  
+  .special-buttons{
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 @media(max-width:1000px) {
   .output-container{
     flex-direction: column;
   }
 
+}
+@media screen and (min-width: 650px){
+  .special-buttons{
+    grid-template-columns: repeat(12, 1fr);
+  }
+  
 }
 .upper-pane {
   display: flex;
@@ -129,41 +137,42 @@ h4 {
   margin: 5px; 
   text-align: justify;
 }
-table {
-            border-collapse: collapse;
+.label-grid {
+  display: flex;
+  justify-content: space-around;
+}
 
-        }
-        th {
-            background-color:green;
-            Color:white;
-        }
-        th, td {
-            width:200px;
-         
-        }
-        .geeks {
-            border-right:hidden;
-        }
-        .gfg {
-            border-collapse:separate;
-            border-spacing:0 15px;
-        }
+.label-item {
+  margin: 5px;
+}
 
-  /* Style for the special buttons */
-  .special-buttons {
-    text-align: center;
-    background-color: #ccc;
-    overflow-x: auto;
-  }
+.label-strip{
+  display: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+#optionHover:hover{
+  color: rgb(76, 0, 255);
+  background-color: #ace550;
+}
+.label-item:hover .label-strip {
+  display: block;
+}
+   .special-buttons {
+        display: none;
+        gap: 1px;
+        background-color: #ccc;
+        overflow: auto;
+    }
 
   .special-buttons button:hover {
     background-color: #830606; /* Change the background color on hover */
     transform: scale(1.1);
   }
-  /* Add similar styles for other buttons */
 
-
-/* Submit button style */
 .submit-button,.delete-button,.clear-button ,.toogle-buttons,.option-button{
   box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
   border: none;
@@ -346,34 +355,7 @@ width: 40px;
   position: absolute;
   color: rgb(0, 0, 0); /* Adjust the text color */
 }
-#optionsLabel {
-  position: relative;
-  display: inline-block;
-}
 
-#optionsDiv {
-  position: absolute;
-  background: rgb(253, 253, 253);
-  opacity: 0;
-  visibility: hidden;
-  padding: 1px;
-  border: 1px solid #ccc;
-  transition: opacity 0.3s;
-  white-space: nowrap; 
-}
-
-#optionsLabel .label-strip label:hover {
-  cursor: pointer;
-}
-
-#optionsLabel:hover #optionsDiv {
-  opacity: 100%;
-  visibility: visible;
-  z-index: 2;
-}
-
-
-/* Style for the input field */
 .input-area {
   width: 100%;
   padding: 2px;

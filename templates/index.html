@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="./static/css/styles.css" />
 
-  <title>189</title>
+  <title>𝟙𝟠𝟡</title>
 </head>
 <body>
   <!-- Fixed Top Pane -->
@@ -14,46 +14,46 @@
     <div>
     <button class="slider-left-button" onclick="toggleSlider('left')">Steps History</button>
     </div>
-    <h4>189 : Your Gateway to Solutions </h4>
+    <h4>𝟙𝟠𝟡 : Your Gateway to Solutions </h4>
     <div>
     <button class="slider-right-button" onclick="toggleSlider('right')">About</button>
     <button class="infobutton" id="infobutton" onclick="toggleInfo()"> Instructions </button> 
     </div>
   </div>
     <div class="lower-pane">
-      <table style="display: flex; justify-content: space-around;">
-        <tr>
-     
-      <td><label id="optionsLabel">Operations on Numbers
-      <div id="optionsDiv">
-            <div class="label-strip">
-                <p><label for="simple">Operations on Real and Complex Numbers</label></p>
-            </div>
-        </div>
-      </label></td>
-      <td><label id="optionsLabel">Functions
-        <div id="optionsDiv">
-              <div class="label-strip">
-              <p> <label for="functions">Functions With Argument</label></p>
-              </div>
-          </div>
-        </label></td>
-        <td> <label id="optionsLabel">Equations
+      <div class="label-grid">
+        <div class="label-item">
+          <label class="options-label" id="optionsLabel">Operations on Numbers</label>
           <div id="optionsDiv">
-              <div class="label-strip">
-                <p> <label for="quadratic">Quadratic Equations</label></p>
-              <p><label for="linear1">Linear Equation in one Variable</label></p>
-            <p>   <label for="linear2">Linear Equation in two Variable</label></p>
-          <p>   <label for="linear3">Linear Equation in three Variable</label></p>
-              </div>
+            <div class="label-strip">
+              <p><label id="optionHover" for="simple">Operations on Real and Complex Numbers</label></p>
+            </div>
           </div>
-        </label></td>
-    </tr>
-    </table>
+        </div>
+      
+        <div class="label-item">
+          <label class="options-label" id="optionsLabel">Functions</label>
+          <div id="optionsDiv">
+            <div class="label-strip">
+              <p><label id="optionHover" for="functions">Functions With Argument</label></p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="label-item">
+          <label class="options-label" id="optionsLabel">Equations</label>
+          <div id="optionsDiv">
+            <div class="label-strip">
+              <p><label id="optionHover" for="quadratic">Quadratic Equations</label></p>
+              <p><label id="optionHover" for="linear1">Linear Equation in one Variable</label></p>
+              <p><label id="optionHover" for="linear2">Linear Equation in two Variable</label></p>
+              <p><label id="optionHover" for="linear3">Linear Equation in three Variable</label></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
-
+    </div>
   <!-- Left Slider -->
   <div class="slider left-slider" id="leftSlider">
     <div>
@@ -115,45 +115,38 @@
    
     <div class="input-area">
       
-      <div class="special-buttons">
-         
-        <table id="buttonTable">
-
-          <tr> 
-          <td><button class="button-0" onclick="addCharacter('0')">0</button></td>
-          <td><button class="button-1" onclick="addCharacter('1')">1</button></td>
-          <td> <button class="button-2" onclick="addCharacter('2')">2</button></td>
-          <td> <button class="button-3" onclick="addCharacter('3')">3</button></td>
-          <td> <button class="button-4"  onclick="addCharacter('4')">4</button></td>
-          <td> <button class="button-0" onclick="addCharacter('5')">5</button></td>
-          <td> <button class="button-1" onclick="addCharacter('6')">6</button></td>
-          <td> <button class="button-2" onclick="addCharacter('7')">7</button></td>
-          <td> <button class="button-3" onclick="addCharacter('8')">8</button></td>
-          <td><button class="button-4" onclick="addCharacter('9')">9</button></td>
-          <td><button class="delete-button" type="button" id="Delete" onclick="deleteCharacter()"> &#10006; </button></td>
-          </tr>
-        <tr><td><button class="button-0" onclick="addCharacter('=')">=</button></td>
-        <td><button class="button-4" onclick="addCharacter('+')">+</button></td>
-        <td> <button class="button-3" onclick="addCharacter('-')">-</button></td>
-        <td> <button class="button-1" onclick="addCharacter('*')">*</button></td>
-        <td> <button class="button-0" onclick="addCharacter('/')">/</button></td>
-        <td> <button class="button-3" onclick="addCharacter('%')">%</button></td>
-        <td> <button class="button-2" onclick="addCharacter('^2')">^2</button></td>
-        <td> <button class="button-1" onclick="addCharacter('^3')">^3</button></td>
-        <td> <button class="button-5" onclick="addCharacter('^(1/2)')">^(1/2)</button></td>
-        <td><button class="button-0" onclick="addCharacter('√')">√</button></td>
-        <td><button class="clear-button" type="button" id="Clear" onclick="clearInput()"> &#8630; </button></td> </tr>
-        <tr><td><button onclick="addCharacter('sin()')">sin()</button></td>
-        <td><button onclick="addCharacter('cos()')">cos()</button></td>
-        <td> <button onclick="addCharacter('tan()')">tan()</button></td>
-        <td> <button onclick="addCharacter('cosec()')">cosec()</button></td>
-        <td> <button onclick="addCharacter('sec()')">sec()</button></td>
-        <td> <button onclick="addCharacter('cot()')">cot()</button></td>
-        <td> <button onclick="addCharacter('log()')">log()</button></td>
-        <td> <button onclick="addCharacter('x^2')">x^2</button></td>
-        <td> <button onclick="addCharacter('x')">x</button></td>
-        <td><button onclick="addCharacter('y')">y</button></td></tr>
-      </table>
+      <div class="special-buttons" id="special-buttons">
+        <button class="button" onclick="addCharacter('0')">0</button>
+        <button class="button" onclick="addCharacter('1')">1</button>
+        <button class="button" onclick="addCharacter('2')">2</button>
+        <button class="button" onclick="addCharacter('3')">3</button>
+        <button class="button" onclick="addCharacter('4')">4</button>
+        <button class="button" onclick="addCharacter('5')">5</button>
+        <button class="button" onclick="addCharacter('6')">6</button>
+        <button class="button" onclick="addCharacter('7')">7</button>
+        <button class="button" onclick="addCharacter('8')">8</button>
+        <button class="button" onclick="addCharacter('9')">9</button>
+        <button class="button" onclick="addCharacter('=')">=</button>
+        <button class="button delete-button" type="button" id="Delete" onclick="deleteCharacter()"> &#10006; </button>
+        <button class="button" onclick="addCharacter('+')">+</button>
+        <button class="button" onclick="addCharacter('-')">-</button>
+        <button class="button" onclick="addCharacter('*')">*</button>
+        <button class="button" onclick="addCharacter('/')">/</button>
+        <button class="button" onclick="addCharacter('%')">%</button>
+        <button class="button" onclick="addCharacter('^2')">^2</button>
+        <button class="button" onclick="addCharacter('^3')">^3</button>
+        <button class="button" onclick="addCharacter('√')">√</button>
+        <button class="button" onclick="addCharacter('x^2')">x^2</button>
+        <button class="button" onclick="addCharacter('x')">x</button>
+        <button class="button" onclick="addCharacter('y')">y</button>
+        <button class="button clear-button" type="button" id="Clear" onclick="clearInput()"> &#8630; </button>
+        <button class="button" onclick="addCharacter('sin()')">sin()</button>
+        <button class="button" onclick="addCharacter('cos()')">cos()</button>
+        <button class="button" onclick="addCharacter('tan()')">tan()</button>
+        <button class="button" onclick="addCharacter('cosec()')">cosec()</button>
+        <button class="button" onclick="addCharacter('sec()')">sec()</button>
+        <button class="button" onclick="addCharacter('cot()')">cot()</button>
+        <button class="button" onclick="addCharacter('log()')">log()</button>
       </div>
         <div class="input-pane">
           <form action="/calculate" method="POST" id="user-input-form" >
@@ -203,7 +196,7 @@
         <div style="display: flex;">
           <button class="option-button" onclick="openOptionsModal()">Click to Choose Option</button>
           <div id="selectedOption"></div>
-          <button class="toggle-button" id="toggleButton" onclick="toggleButtons()">&#x2328;</button> 
+          <button class="toggle-button" id="toggleButton" onclick="toggleContent('special-buttons')">&#x2328;</button> 
         </div>
         </div>
       </div>
@@ -233,9 +226,9 @@
   </div>
   <div class="moving-strip" style="font-weight: bolder;">
     <p>
-      (: Welcome to "189" :) || This website is currently in development || <br>
+      (: Welcome to "𝟙𝟠𝟡" :) || This website is currently in development || <br>
       || Please read the provided instructions carefully for optimal interaction and accurate information.||<br>
-      (: Thanks for Using "189 : Your Gateway to Solutions" :)
+      (: Thanks for Using "𝟙𝟠𝟡 : Your Gateway to Solutions" :)
     </p>
   </div>
 </div>
