@@ -31,7 +31,7 @@ def home():
             if calculation_type == "simple":
                 expression = request.form.get('userInput')
                 # Implement simple calculation logic here
-                result,steps_str =calculate_expression(expression)
+                result,_ =calculate_expression(expression)
                 steps = steps_calculate_expression(expression)
                 img_data = plot_on_number_line(result)             
                 calculation_history.append((f"Input Expression : \n{expression}",f"Result : \n{result}",steps)) 
