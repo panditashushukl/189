@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="./static/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="./static/css/repeated.css" />
+  <link rel="stylesheet" href="https://unpkg.com/mathlive/dist/mathlive.core.css">
+  <title>BhaskarAcharya</title>
+</head>
+<body>
+  <header>
+    <span class="name">
+      <b class="title-mobile">BhaskarAcharya </b><b> MathsSolver</b>
+    </span>
+    <span class="head-button">
+      <button><a href="/">Home</a></button>
+      <button class="slider-left-button" id="historyBtn" onclick="toggleSlider('left');">History</button>
+      <button class="slider-right-button" onclick="toggleSlider('right');">⋮⋮⋮</button>
+    </span>   
+    <div class="slider left-slider" id="leftSlider">
+      <button class="back-button" onclick="toggleSlider('null')">←</button>
+      <button class="close-button" onclick="toggleSlider('null')">✖</button>
+      <div id="history-section" style="margin-bottom: 50px;">
+        <h2>History of Calculations</h2>
+        <button id="clearHistoryBtn">Clear History</button>
+        <hr>
+        <div id="history-list"></div>
+      </div>
+    </div>
+    <div class="slider right-slider" id="rightSlider">
+      <button class="back-button" onclick="toggleSlider('null')">←</button>
+      <button class="close-button" onclick="toggleSlider('null')">✖</button>
+      {% include 'optionlink.html' %}
+    </div>
+  </header>
+  <main>
+    <span class="left-span">
+      {% include 'optionlink.html' %}
+    </span>
+    
+    <span class="right-span">
+        <math-field id="equation" placeholder="Type Maths Problem"></math-field>
+    <div class="input-pane">
+      <button id="submit">Submit</button>
+        <select class="dropdown-menu" id="options" name="options">
+          <option value="simple" selected>Simple Calculator</option>
+          <option value="functions">Function with argument</option>
+          <option value="quadratic">Quadratic Equation</option>
+          <option value="linear1">Linear Equation in one variable</option>
+          <option value="linear2">Linear Equation in two variable</option>
+          <option value="linear3">Linear Equation in three variable</option>
+        </select>
+      </div>
+
+      <div class="output-pane">
+        <div id="result"></div>
+        <div id="stepsContent" class="steps-content" >
+        </div>
+        <div id="graphContent" class="graph-content" >  
+        </div>
+      </div>
+      <div class="explaination-pane">
+        {% include 'explaination.html' %}
+      </div>
+    </span>
+  </main>
+<footer>
+  <div class="footer-div">
+    <button class="footer-button"><a href="#equation">Input-Feild</a></button>
+    <button class="footer-button"><a href="#stepsContent">Steps</a></button>
+    <button class="footer-button"><a href="#graphContent">Graph</a></button>
+  </div>
+</footer>
+<script src="https://unpkg.com/mathlive" ></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./static/script/script.js"></script>
+</body>
+</html>

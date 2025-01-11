@@ -1,0 +1,218 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  --keycap-height: 30px;
+  --keycap-font-size: 15px;
+  --keycap-shift-font-size: 15px;
+  --keycap-gap : 0.5px;
+}
+.slider-right-button{
+  display: none;
+}
+main {
+  margin: 5px 50px;
+  padding: 10px;
+  display: flex;
+  position: relative; 
+}
+
+.dropdown-menu{
+  height: 50px;
+}
+.left-span {
+  position: fixed;
+  left: 0;
+  top: 50px; 
+  width: 20%;  
+  height: 100%; 
+  padding: 5px;
+  background-color: #f0f0f0; 
+}
+.what-i-do{
+  margin: 10px;
+}
+.option-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin: 2px;
+  padding: 5px;
+}
+
+.option-link:hover {
+    background-color: #4CAF50; /* Change background on hover */
+    color: white; /* Change text color on hover */
+    border-color: #4CAF50; /* Change border color */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.option-link:active {
+    transform: scale(1);
+    background-color: #45a049; /* Darker green on active */
+}
+.option-link:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(72, 255, 72, 0.8); /* Green glow effect */
+}
+.right-span {
+  position: fixed;
+  padding: 5px;
+  left: 20%; 
+  top: 50px; 
+  width: 80%;  
+  height: 100%; 
+  background-color: #fff; 
+  overflow: auto;
+}
+
+#equation{
+  width: 99%;
+
+}
+.input-pane{
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#submit,#clearHistoryBtn,.append-history{
+  box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
+  border-radius: 10%;
+  padding: 5px 15px;
+}
+
+/* Styling the Result Div */
+#result {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  color: #333;
+  border-left: 5px solid #4CAF50; /* Accent color */
+}
+
+#result h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+/* Styling the Steps Content Div */
+#stepsContent {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  color: #333;
+}
+
+#stepsContent h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #00bcd4;
+}
+
+/* Styling the Graph Content Div */
+#graphContent {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  color: #333;
+}
+
+#graphContent h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #ff9800;
+}
+
+/* Adding responsive behavior */
+@media (max-width: 768px) {
+  #result, #stepsContent, #graphContent {
+      margin: 10px;
+      padding: 15px;
+  }
+
+  #result h2, #stepsContent h2, #graphContent h2 {
+      font-size: 20px;
+  }
+}
+#history-list{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.output-pane{
+  text-align: justify;
+  margin: 5px;
+  padding: 5px;
+}
+.steps-content{
+  margin: 5px;
+  padding: 5px;
+}
+
+#graphContent {
+  margin: 0 auto; 
+  overflow: auto; 
+  margin-bottom: 50px;
+}
+.explaination-pane{
+  margin-bottom: 100px;
+}
+.footer-div{
+  width:100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.footer-button:nth-child(1) {
+  background-color: #FFDDC1;  
+  border: 2px solid #D85C5C; 
+}
+
+.footer-button:nth-child(2) {
+  background-color: #C7E9B0;  
+  border: 2px solid #47A14D; 
+}
+
+.footer-button:nth-child(3) {
+  background-color: #FBEEC1;
+  border: 2px solid #E6B800; 
+}
+
+@media (max-width: 600px) {
+  p{
+    font-size: small;
+  }
+  .slider-right-button{
+    display: inline;
+  } 
+  .left-span{
+    display: none;
+  }
+  .right-span{
+    width: 99%;
+    left: 1%;
+  }
+  .title-mobile{
+    display: none;
+  }
+  #equation{
+    width: 94%;
+  }
+  .input-feild-container{
+    min-height: 100px;
+  }
+}
