@@ -10,23 +10,26 @@ body {
   display: none;
 }
 main {
-  margin: 5px 50px;
-  padding: 10px;
+  padding: 50px 5px;
   display: flex;
-  position: relative; 
+  justify-content: space-between;
+}
+.left-span,.right-span {
+  padding: 5px;
+  border-radius: 5px;
+}
+.left-span{
+  width: 24%;
+  background-color: #f0f0f0; 
+}
+.right-span {
+  width: 74%;
+  background-color: #fff; 
+  overflow: auto;
 }
 
 .dropdown-menu{
   height: 50px;
-}
-.left-span {
-  position: fixed;
-  left: 0;
-  top: 50px; 
-  width: 20%;  
-  height: 100%; 
-  padding: 5px;
-  background-color: #f0f0f0; 
 }
 .what-i-do{
   margin: 10px;
@@ -54,21 +57,17 @@ main {
 
 .option-link:active {
     transform: scale(1);
-    background-color: #45a049; /* Darker green on active */
+    background-color: #45a049; 
+
 }
 .option-link:focus {
     outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px rgba(72, 255, 72, 0.8); /* Green glow effect */
+    box-shadow: 0 0 5px rgba(72, 255, 72, 0.8); 
+    background-color: pink;/* Green glow effect */
 }
-.right-span {
-  position: fixed;
-  padding: 5px;
-  left: 20%; 
-  top: 50px; 
-  width: 80%;  
-  height: 100%; 
-  background-color: #fff; 
-  overflow: auto;
+.option-link.persistent-focus {
+  box-shadow: 0 0 5px rgba(72, 255, 72, 0.8);
+  background-color: pink;
 }
 
 #equation{
@@ -78,10 +77,10 @@ main {
 .input-pane{
   margin: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-#submit,#clearHistoryBtn,.append-history{
+#submit,#clearHistoryBtn,.append-history,.dynamic-result,#clear{
   box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
   border-radius: 10%;
   padding: 5px 15px;
@@ -175,22 +174,18 @@ main {
 .footer-div{
   width:100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
-.footer-button:nth-child(1) {
+.footer-button:nth-child(odd) {
   background-color: #FFDDC1;  
   border: 2px solid #D85C5C; 
 }
 
-.footer-button:nth-child(2) {
-  background-color: #C7E9B0;  
-  border: 2px solid #47A14D; 
+.footer-button:nth-child(even) {
+  background-color: #ec5e5e;  
+  border: 2px solid #234a26; 
 }
 
-.footer-button:nth-child(3) {
-  background-color: #FBEEC1;
-  border: 2px solid #E6B800; 
-}
 
 @media (max-width: 600px) {
   p{
@@ -214,5 +209,8 @@ main {
   }
   .input-feild-container{
     min-height: 100px;
+  }
+  .input-pane{
+    flex-direction: column;
   }
 }

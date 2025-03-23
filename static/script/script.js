@@ -2,27 +2,14 @@ const equation = document.getElementById('equation');
 const mathField = document.querySelector('math-field');
 
 mathField.addEventListener('input', function () {
-  const latexContent = mathField.shadowRoot.querySelector('.ML__latex');
-  const newLine = mathField.shadowRoot.querySelector('.ML__container');
+  const latexContent = document.querySelector('#dynamic-results');
   if (latexContent ) {
-    let newSpan = latexContent.querySelector('.dynamic-result') || newLine.querySelector('.dynamic-result');
+    let newSpan = latexContent.querySelector('.dynamic-result') ;
     if (!newSpan) {
       newSpan = document.createElement('span');
       newSpan.classList.add('dynamic-result');
-      if (window.innerWidth < 600) {
-        newLine.appendChild(newSpan);
-      }
-      else{
-        latexContent.appendChild(newSpan);
-      }
+      latexContent.appendChild(newSpan);
       
-    }
-    if (window.innerWidth >= 600) {
-      newSpan.style.marginLeft = '5px';
-    }
-    if (window.innerWidth<600){
-      newSpan.style.alignItems = 'center';
-      newSpan.style.height = '40px';
     }
     newSpan.style.background = 'linear-gradient(45deg, red, blue, green)';
     newSpan.style.webkitBackgroundClip = 'text'; // Ensure gradient applies to text
@@ -30,7 +17,7 @@ mathField.addEventListener('input', function () {
     const equationText = mathField.getValue('ascii-math').replace(/\^/g, '**');
     try {
       const result = eval(equationText);
-      newSpan.textContent = '=' + result.toFixed(1) || ' ';
+      newSpan.textContent = '=' + result.toFixed(1) || '';
     } catch (error) {
       newSpan.textContent = ' ';
     }
@@ -45,6 +32,13 @@ document.querySelector('math-field').
 
 $(document).ready(function() {
   $('.output-pane').hide();
+
+    // Clear button click listener
+    $('#clear').click(function() {
+      mathField.setValue(''); // Clear the MathField content
+      $('#dynamic-results').html(''); // Clear the result
+      $('.output-pane').hide(); // Hide the output pane
+    });
   $('#submit').click(function() {
     const expression = equation.getValue('ascii-math'); // Use .value to get the raw expression from input field
     const latexExpression = equation.getValue(); // Assuming this is the LaTeX expression (formatted)
@@ -144,7 +138,7 @@ function toggleSlider(direction) {
     leftSlider.style.width = leftSlider.style.width === '100%' ? '0' : '100%';
     rightSlider.style.width = '0';
   } else if (direction === 'right') {
-    rightSlider.style.width = rightSlider.style.width === '50%' ? '0' : '50%';
+    rightSlider.style.width = rightSlider.style.width === '100%' ? '0' : '100%';
     leftSlider.style.width = '0';
   }
   else{
@@ -152,3 +146,60 @@ function toggleSlider(direction) {
     leftSlider.style.width = '0';
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const dropdown = document.getElementById('options');
+  const optionLinks = document.querySelectorAll('.option-link');
+
+  // Function to remove persistent focus from all elements
+  function removeAllFocus() {
+      optionLinks.forEach(link => {
+          link.classList.remove('persistent-focus');
+      });
+  }
+
+  // Function to focus the corresponding link based on selected value
+  function focusOptionLink(selectedValue) {
+      removeAllFocus(); // Remove focus from all links before focusing the selected one
+
+      // Find the link matching the selected option and add focus
+      optionLinks.forEach(link => {
+          if (link.getAttribute('data-option') === selectedValue) {
+              link.classList.add('persistent-focus');
+              link.focus(); // Focus the link visually
+          }
+      });
+  }
+
+  // Listen for changes on the dropdown menu
+  dropdown.addEventListener('change', function () {
+      const selectedValue = dropdown.value;
+      focusOptionLink(selectedValue);
+  });
+
+  // Optional: Allow clicking on the links to keep their focus
+  optionLinks.forEach(link => {
+      link.addEventListener('click', function () {
+          removeAllFocus(); // Remove focus from other links
+          link.classList.add('persistent-focus'); // Focus the clicked link
+      });
+  });
+
+  // On page load, apply the focus to the currently selected dropdown option
+  focusOptionLink(dropdown.value);
+});
+document.querySelectorAll('.footer-button a').forEach(link => {
+  link.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+          window.scrollTo({
+              top: targetElement.offsetTop - 50,  // Scroll 50px above the target
+              behavior: 'smooth' // Smooth scroll effect
+          });
+      }
+  });
+});

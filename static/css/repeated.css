@@ -1,5 +1,6 @@
 body{
   margin: 0;
+  background-color: #FFF9F0;
 }
 header{
   display: flex;
@@ -28,8 +29,7 @@ button{
   cursor: pointer;
 }
 
-.left-slider,
-.right-slider {
+.slider {
   padding-top: 50px;
   position: fixed;
   overflow-y: scroll;
@@ -45,6 +45,11 @@ button{
 }
 .right-slider {
   right: 0;
+}
+
+.slider-content {
+  margin-bottom: 50px;
+  padding: 20px;
 }
 
 .close-button,.back-button {

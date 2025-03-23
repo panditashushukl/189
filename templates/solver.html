@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="{{ url_for('static', filename='images/icon.jpg') }}" type="image/jpg">
   <link rel="stylesheet" type="text/css" href="./static/css/styles.css" />
   <link rel="stylesheet" type="text/css" href="./static/css/repeated.css" />
   <link rel="stylesheet" href="https://unpkg.com/mathlive/dist/mathlive.core.css">
@@ -10,14 +11,14 @@
 </head>
 <body>
   <header>
-    <span class="name">
+    <div class="name">
       <b class="title-mobile">BhaskarAcharya </b><b> MathsSolver</b>
-    </span>
-    <span class="head-button">
+    </div>
+    <nav class="head-button">
       <button><a href="/">Home</a></button>
       <button class="slider-left-button" id="historyBtn" onclick="toggleSlider('left');">History</button>
       <button class="slider-right-button" onclick="toggleSlider('right');">⋮⋮⋮</button>
-    </span>   
+    </nav>   
     <div class="slider left-slider" id="leftSlider">
       <button class="back-button" onclick="toggleSlider('null')">←</button>
       <button class="close-button" onclick="toggleSlider('null')">✖</button>
@@ -43,7 +44,8 @@
         <math-field id="equation" placeholder="Type Maths Problem"></math-field>
     <div class="input-pane">
       <button id="submit">Submit</button>
-        <select class="dropdown-menu" id="options" name="options">
+      <button id="clear">Clear</button>
+      <select class="dropdown-menu" id="options" name="options">
           <option value="simple" selected>Simple Calculator</option>
           <option value="functions">Function with argument</option>
           <option value="quadratic">Quadratic Equation</option>
@@ -52,7 +54,7 @@
           <option value="linear3">Linear Equation in three variable</option>
         </select>
       </div>
-
+      <div id="dynamic-results"></div>
       <div class="output-pane">
         <div id="result"></div>
         <div id="stepsContent" class="steps-content" >
@@ -68,11 +70,13 @@
 <footer>
   <div class="footer-div">
     <button class="footer-button"><a href="#equation">Input-Feild</a></button>
+    <button class="footer-button footer-result"><a href="#result">Answer</a></button>
     <button class="footer-button"><a href="#stepsContent">Steps</a></button>
     <button class="footer-button"><a href="#graphContent">Graph</a></button>
   </div>
 </footer>
-<script src="https://unpkg.com/mathlive" ></script>
+<script src="https://cdn.jsdelivr.net/npm/mathlive@0.104.1/dist/mathlive.min.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./static/script/script.js"></script>
 </body>

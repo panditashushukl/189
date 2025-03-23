@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{{ url_for('static', filename='images/icon.jpg') }}" type="image/jpg">
   <title>𝟙𝟠𝟡</title>
   <link rel="stylesheet" type="text/css" href="./static/css/repeated.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
     main {
-      background-image: url("./static/images/home.webp");
+      background-color:  #2C3E50; 
       height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       font-family: Arial, sans-serif;
-      margin-bottom: 50px;
     }
-    .main-div {
+    .main-div,.right-slider-content {
       margin: auto;
       background-color: #67676b;
       border-radius: 10px;
@@ -24,20 +22,30 @@
       width: 80%;
       max-width: 600px;
       text-align: center;
-      font-size: 2em;
+      font-size: 1.5em;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    .main-div a {
+    .main-div a,button {
       text-decoration: none;
       color: #4CAF50;
       font-weight: bold;
     }
   
-    .main-div a:hover {
+    .main-div a:hover,button:hover {
       color: #3e8e41;
     }
     .world-189 {
       color: #333;
+    }
+    .world-189 span{
+      color: gold;
+    }
+    .content-1 {
+      display: flex;
+      justify-content: space-between;
+    }
+    .content-col-1,.content-col-2 {
+      width: 47%;
     }
     ul {
       list-style-type: none;
@@ -46,35 +54,34 @@
     li {
       margin: 5px 0;
     }
-    .contact-mobile{
-        display: none;
-      }
+   footer{
+      justify-content: center;
+    }
+    nav {
+      display: flex;
+      justify-content: space-evenly;
+    }
     @media (max-width: 450px) {
-      .main-div {
+      .main-div,.right-slider-content {
         font-size: medium;
       }
-      .contact-desktop{
-        display: none;
+      nav {
+      display: block;
       }
-      .contact-mobile{
+      .content-1{
         display: block;
       }
-      footer{
-        font-size: small;
-        text-align: center;
-        display: block;
-      }
+      .content-col-1,.content-col-2 {
+      width: 97%;
+    }
     }
   </style>
 
 <body>
-    <header>
-      𝟙𝟠𝟡
-      <button class="slider-right-button contact-mobile" onclick="toggleSlider('right');">info</button>
-    </header>
+
     <main>
       <div class="main-div">
-      <div class="world-189">Welcome to the 𝟙𝟠𝟡 World </div>
+      <div class="world-189">Welcome to the <span>𝟙𝟠𝟡</span> World </div>
       <hr>
       <ul>
       Start Exploring :
@@ -82,13 +89,21 @@
         <li><a href="DigiMathsBot">DigiMathsBot</a></li>
       </ul>
       <hr>
-      <button class="slider-left-button" onclick="toggleSlider('left');">How to use Website?</button><br>
+      <div class="contact-desktop">
+        {% include 'contact.html' %}
+      </div>
+      <hr>
+      <nav>
+        <button class="slider-left-button" onclick="toggleSlider('left');">How to use Website?</button><br>
+        <button class="slider-right-button" onclick="toggleSlider('right');">info</button>
+      </nav>
     </div>
     </main>
     
   <div class="slider right-slider" id="rightSlider">
     <button class="back-button" onclick="toggleSlider('null')">←</button>
     <button class="close-button" onclick="toggleSlider('null')">✖</button>
+    <div class="slider-content right-slider-content">
     <h2>Developed by ASHUTOSH SHUKLA</h2>
     <hr>
     <ul>
@@ -99,30 +114,34 @@
     <hr>
     {% include 'contact.html' %}
     </p>
+   </div>
   </div>
   <div class="slider left-slider" id="leftSlider">
     <button class="back-button" onclick="toggleSlider('null')">←</button>
     <button class="close-button" onclick="toggleSlider('null')">✖</button>
-    <div style="margin-bottom: 50px;">
-      <h2>About both Models</h2>
-      <p style="font-size: large;">
-        The BhaskarAcharya model is for basic calculation oriented problems <br><br>
-        The DigiMathsBot model is for solving the complex Mathematical problems which is in development 
-      </p>
-      <h2>How to use Website?</h2>
-      <p style="font-size: large;">
-        Type Maths Problem and Select the accurate option to get accurate results.
-      </p>
-      <iframe width="auto" height="auto" src="https://www.youtube.com/embed/EmSogdHBg5M?si=fY4_OK8Nie91AOD9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="slider-content">
+      <div class="content-1">
+        <div class="content-col-1">
+          <h2>About both Models</h2>
+          <p style="font-size: large;">
+            The BhaskarAcharya model is for basic calculation oriented problems <br><br>
+            The DigiMathsBot model is for solving the complex Mathematical problems which is in development 
+          </p>
+        </div>
+        <div class="content-col-2">
+          <h2>How to use Website?</h2>
+          <p style="font-size: large;">
+            Type Maths Problem and Select the accurate option to get accurate results.
+          </p>
+          <iframe width="95%" height="auto" src="https://www.youtube.com/embed/EmSogdHBg5M?si=fY4_OK8Nie91AOD9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
       <h2>Highlight of the Website</h2>
       {% include 'explaination.html'%}
     </div>
   </div>
   <footer>
-    <span class="contact-desktop">
-      {% include 'contact.html' %}
-      </span>
-      <span class="developer-name">Developer: ASHUTOSH SHUKLA</span>
+      Developer: ASHUTOSH SHUKLA
   </footer>
   <script src="./static/script/script.js"></script>
 </body>
