@@ -49,7 +49,10 @@ $(document).ready(function() {
       alert('Please enter an expression.');
       return;
     }
+    
+    $('.output-pane').html('<div class="loading-screen"><div class="loading-spinner"></div></div>'); 
 
+    $('.output-pane').show();
     $.ajax({
       url: '/BhaskarAcharya',
       type: 'POST',
@@ -58,11 +61,15 @@ $(document).ready(function() {
         calculationType: calculationType
       },
       success: function(response) {
+        $('.output-pane .loading-screen').remove();
+        $('.output-pane').html(`
+          <div id="result"></div>
+          <div id="stepsContent"></div>
+          <div id="graphContent"></div>`); 
         $('#result').html('<b>Evaluated Result:</b><br><br>' + response.result.replace(/\n/g, '<br>'));
         $('#stepsContent').html('<b>Step-by-step Solution:</b><br><br>' + response.steps.replace(/\n/g, '<br>'));
         $('#graphContent').html('<b>Graph:</b><br><br><img src="data:image/png;base64,' + response.graph + '" alt="Graph" style="width: 100%; max-width: 600px;">');
         
-        $('.output-pane').show();
         // Save LaTeX expression, result, and calculationType to history
         var history = JSON.parse(localStorage.getItem('history')) || [];
         history.push({
@@ -203,3 +210,38 @@ document.querySelectorAll('.footer-button a').forEach(link => {
       }
   });
 });
+
+ // Get the button element
+ const toggleButton = document.getElementById("toggleTheme");
+ const leftSpan = document.querySelector('.left-span');
+ const rightSpan = document.querySelector('.right-span');
+ const equationID = document.querySelector('#equation');
+ const dropDownMenu = document.querySelector('.dropdown-menu');
+
+ // Check localStorage for saved theme preference
+ const currentTheme = localStorage.getItem("theme") || 
+  (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark-mode" : "light-mode");
+ // Apply the saved theme on page load
+ document.body.classList.add(currentTheme);
+ leftSpan.classList.add(currentTheme);
+ rightSpan.classList.add(currentTheme);
+ equationID.classList.add(currentTheme);
+ dropDownMenu.classList.add(currentTheme);
+ // Toggle the theme when the button is clicked
+ toggleButton.addEventListener("click", function () {
+   if (document.body.classList.contains("dark-mode")) {
+     document.body.classList.remove("dark-mode");
+     leftSpan.classList.remove("dark-mode");
+      rightSpan.classList.remove("dark-mode");
+      equationID.classList.remove("dark-mode");
+      dropDownMenu.classList.remove("dark-mode");
+     localStorage.setItem("theme", "light-mode");
+   } else {
+    document.body.classList.add("dark-mode");
+    leftSpan.classList.add("dark-mode");
+    rightSpan.classList.add("dark-mode");
+    equationID.classList.add("dark-mode");
+    dropDownMenu.classList.add("dark-mode");
+     localStorage.setItem("theme", "dark-mode");
+   }
+ });

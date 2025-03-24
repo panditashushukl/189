@@ -6,6 +6,7 @@ body {
   --keycap-shift-font-size: 15px;
   --keycap-gap : 0.5px;
 }
+
 .slider-right-button{
   display: none;
 }
@@ -35,9 +36,9 @@ main {
   margin: 10px;
 }
 .option-link {
+  color: black;
   display: inline-block;
   text-decoration: none;
-  color: #333;
   border: 2px solid transparent;
   border-radius: 8px;
   font-size: 18px;
@@ -77,65 +78,51 @@ main {
 .input-pane{
   margin: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-
-#submit,#clearHistoryBtn,.append-history,.dynamic-result,#clear{
-  box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.16);
+.dynamic-result{
+  margin: 1px 20px;
+  display: block;
+  height: 20px;
+}
+#submit,#clearHistoryBtn,.append-history,#clear{
+  box-shadow: inset 5px 5px 12px #656262, 5px 5px 12px rgba(0, 0, 0, 0.16);
+  color: rgb(132, 114, 11);
   border-radius: 10%;
-  padding: 5px 15px;
+  padding: 15px;
 }
 
-/* Styling the Result Div */
-#result {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-size: 18px;
-  color: #333;
-  border-left: 5px solid #4CAF50; /* Accent color */
-}
 
-#result h2 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: #4CAF50;
-}
 
 /* Styling the Steps Content Div */
-#stepsContent {
-  background-color: #ffffff;
+#stepsContent,#result {
+  margin: 5px;
+  padding: 5px;
   border-radius: 8px;
   padding: 20px;
   margin: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 18px;
-  color: #333;
+  border-left: 5px solid #4CAF50;
 }
 
-#stepsContent h2 {
+#stepsContent h2,#result h2 {
   font-size: 22px;
   margin-bottom: 10px;
-  color: #00bcd4;
 }
 
 /* Styling the Graph Content Div */
 #graphContent {
-  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
   margin: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 18px;
-  color: #333;
 }
 
 #graphContent h2 {
   font-size: 22px;
   margin-bottom: 10px;
-  color: #ff9800;
 }
 
 /* Adding responsive behavior */
@@ -153,15 +140,15 @@ main {
   display: flex;
   flex-direction: column-reverse;
 }
+.history-item{
+  overflow: auto;
+}
 .output-pane{
   text-align: justify;
   margin: 5px;
   padding: 5px;
 }
-.steps-content{
-  margin: 5px;
-  padding: 5px;
-}
+
 
 #graphContent {
   margin: 0 auto; 
@@ -184,6 +171,34 @@ main {
 .footer-button:nth-child(even) {
   background-color: #ec5e5e;  
   border: 2px solid #234a26; 
+}
+
+/* Define the loading screen styles */
+.loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loading-spinner {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 
@@ -213,4 +228,9 @@ main {
   .input-pane{
     flex-direction: column;
   }
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
 }

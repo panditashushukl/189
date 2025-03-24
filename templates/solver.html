@@ -7,22 +7,26 @@
   <link rel="stylesheet" type="text/css" href="./static/css/styles.css" />
   <link rel="stylesheet" type="text/css" href="./static/css/repeated.css" />
   <link rel="stylesheet" href="https://unpkg.com/mathlive/dist/mathlive.core.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <title>BhaskarAcharya</title>
 </head>
 <body>
   <header>
     <div class="name">
-      <b class="title-mobile">BhaskarAcharya </b><b> MathsSolver</b>
+      <b class="title-mobile" style="color: black;">BhaskarAcharya </b><b style="color: black;"> MathsSolver</b>
     </div>
     <nav class="head-button">
-      <button><a href="/">Home</a></button>
       <button class="slider-left-button" id="historyBtn" onclick="toggleSlider('left');">History</button>
+      <button id="toggleTheme">
+        <i class="fas fa-moon"></i>
+      </button>
       <button class="slider-right-button" onclick="toggleSlider('right');">⋮⋮⋮</button>
+      <button><a href="/">Home</a></button>
     </nav>   
     <div class="slider left-slider" id="leftSlider">
       <button class="back-button" onclick="toggleSlider('null')">←</button>
       <button class="close-button" onclick="toggleSlider('null')">✖</button>
-      <div id="history-section" style="margin-bottom: 50px;">
+      <div id="history-section" style="margin-bottom: 50px; padding:1px; overflow: hidden;">
         <h2>History of Calculations</h2>
         <button id="clearHistoryBtn">Clear History</button>
         <hr>
@@ -43,8 +47,10 @@
     <span class="right-span">
         <math-field id="equation" placeholder="Type Maths Problem"></math-field>
     <div class="input-pane">
-      <button id="submit">Submit</button>
-      <button id="clear">Clear</button>
+      <div style="display: flex;justify-content: space-between;">
+        <button id="submit">Submit</button>
+        <button id="clear">Clear</button>
+      </div>
       <select class="dropdown-menu" id="options" name="options">
           <option value="simple" selected>Simple Calculator</option>
           <option value="functions">Function with argument</option>
@@ -56,10 +62,6 @@
       </div>
       <div id="dynamic-results"></div>
       <div class="output-pane">
-        <div id="result"></div>
-        <div id="stepsContent" class="steps-content" >
-        </div>
-        <div id="graphContent" class="graph-content" >  
         </div>
       </div>
       <div class="explaination-pane">
