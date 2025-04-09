@@ -189,6 +189,7 @@ def find_roots(a, b, c):
     root1 = (-b + discriminant) / (2*a)
     root2 = (-b - discriminant) / (2*a)
     return root1, root2
+
 def plot_quadratic(a, b, c):
 
      # Calculate the roots of the quadratic equation

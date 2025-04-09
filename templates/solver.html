@@ -16,7 +16,7 @@
       <b class="title-mobile" style="color: black;">BhaskarAcharya </b><b style="color: black;"> MathsSolver</b>
     </div>
     <nav class="head-button">
-      <button class="slider-left-button" id="historyBtn" onclick="toggleSlider('left');">History</button>
+      <button class="slider-left-button" id="historyBtn" onclick="toggleSlider('left'); displayHistory();">History</button>
       <button id="toggleTheme">
         <i class="fas fa-moon"></i>
       </button>
@@ -28,7 +28,7 @@
       <button class="close-button" onclick="toggleSlider('null')">✖</button>
       <div id="history-section" style="margin-bottom: 50px; padding:1px; overflow: hidden;">
         <h2>History of Calculations</h2>
-        <button id="clearHistoryBtn">Clear History</button>
+        <button id="clearHistoryBtn" onclick="clearHistory()">Clear History</button>
         <hr>
         <div id="history-list"></div>
       </div>
