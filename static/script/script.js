@@ -60,6 +60,20 @@ document.addEventListener('DOMContentLoaded', () => {
     equation.setValue('')
     output.style.display = 'none'
   })
+
+  // Button to change the Theme
+  const toggleButton = document.getElementById("toggleTheme");
+  toggleButton.addEventListener('click', () => {
+    const rootStyles = getComputedStyle(document.documentElement);
+    const colorScheme = rootStyles.getPropertyValue('color-scheme').trim();
+    if (colorScheme === 'dark') {
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.removeAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  });
 });
 
 //Function that Prints data in Output Pane
@@ -75,7 +89,7 @@ function printData(data,expression){
     </div>
     <div id="stepsContent">
       <b>Step-by-step Solution:</b><br><br> 
-      <pre>${data.steps}</pre>
+      ${data.steps.replace(/\n/g, '<br>')} 
     </div>
     <div id="graphContent">
       <b>Graph:</b><br><br>
@@ -197,35 +211,4 @@ document.querySelectorAll('.footer-button a').forEach(link => {
           });
       }
   });
-});
-
-// Get the button element
-const toggleButton = document.getElementById("toggleTheme");
-const leftSpan = document.querySelector('.left-span');
-const rightSpan = document.querySelector('.right-span');
-const dropDownMenu = document.querySelector('.dropdown-menu');
-
-// Check localStorage for saved theme preference
-const currentTheme = localStorage.getItem("theme") || 
- (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark-mode" : "light-mode");
-// Apply the saved theme on page load
-document.body.classList.add(currentTheme);
-leftSpan.classList.add(currentTheme);
-equation.classList.add(currentTheme);
-dropDownMenu.classList.add(currentTheme);
-// Toggle the theme when the button is clicked
-toggleButton.addEventListener("click", function () {
-  if (document.body.classList.contains("dark-mode")) {
-    document.body.classList.remove("dark-mode");
-    leftSpan.classList.remove("dark-mode");
-     equation.classList.remove("dark-mode");
-     dropDownMenu.classList.remove("dark-mode");
-    localStorage.setItem("theme", "light-mode");
-  } else {
-   document.body.classList.add("dark-mode");
-   leftSpan.classList.add("dark-mode");
-   equation.classList.add("dark-mode");
-   dropDownMenu.classList.add("dark-mode");
-    localStorage.setItem("theme", "dark-mode");
-}
 });
