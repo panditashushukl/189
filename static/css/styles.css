@@ -25,7 +25,6 @@ main {
 }
 .right-span {
   width: 74%;
-  background-color: #fff; 
   overflow: auto;
 }
 
@@ -36,7 +35,6 @@ main {
   margin: 10px;
 }
 .option-link {
-  color: black;
   display: inline-block;
   text-decoration: none;
   border: 2px solid transparent;

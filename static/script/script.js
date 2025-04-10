@@ -3,6 +3,7 @@ let history = JSON.parse(localStorage.getItem('history')) || []
 const options = document.querySelector('#options');
 const equation = document.querySelector('#equation')
 
+//This Event Listenenr is for printing dynamic Results
 equation.addEventListener('input', function () {
   const equationText = equation.getValue('ascii-math').replace(/\^/g, '**');
   try {
@@ -12,6 +13,8 @@ equation.addEventListener('input', function () {
     output.innerHTML = ' ';
   }
 })
+
+//Send Data To Server
 function sendData(expression, calculationType){
   const formData = new URLSearchParams();
   formData.append('userInput', expression);
@@ -20,9 +23,9 @@ function sendData(expression, calculationType){
   fetch('/BhaskarAcharya', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded', // change content type
+      'Content-Type': 'application/x-www-form-urlencoded', 
     },
-    body: formData.toString() // convert the form data to query string format
+    body: formData.toString()
   })
   .then(response => response.json())
   .then(data => {
@@ -35,9 +38,10 @@ function sendData(expression, calculationType){
   });  
   
 }
-
+//Event Listener on Document Load
 document.addEventListener('DOMContentLoaded', () => {
-  settingOptionBackground()
+  addingClassToOptions()
+  //Event Listener to Submit the Data
   document.querySelector('#submit').addEventListener('click',()=>{
     if (equation.getValue('ascii-math') === ''){
       output.innerHTML = `
@@ -51,13 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
     sendData(equation.getValue('ascii-math'),options.value)
   })
 
+  //Event Listener to clear the data
   document.querySelector('#clear').addEventListener('click',()=>{
     equation.setValue('')
     output.style.display = 'none'
   })
 });
 
-
+//Function that Prints data in Output Pane
 function printData(data,expression){
   output.innerHTML = `
     <div id="expression">
@@ -79,23 +84,27 @@ function printData(data,expression){
   `
 }
 
+//If Error Occurred this function prints error
 function printError(error){
   output.innerHTML = `
     <div id="expression"> ${error} </div>
   `
 }
 
+//This function is used to set history in the array and also sets in local storage
 function setHistory(result,expression) {
   history.push({expression : expression, result : result, calculationType : options.value})
   localStorage.setItem("history", JSON.stringify(history))
 }
 
+//This function clears the History from the local storage
 function clearHistory() {
   localStorage.removeItem("history");
   history = []
   document.querySelector('#history-list').innerHTML = ""
 }
 
+//This function is used to display History in slider span
 function displayHistory(){
   history.map(({expression,result},index)=>{
     const historyItem =`
@@ -110,6 +119,7 @@ function displayHistory(){
     document.querySelector('#history-list').innerHTML += historyItem
   })
 
+  //Event Listener to use the data of history
   document.querySelectorAll('.useHistory').forEach(button => {
     button.addEventListener('click', (e) => {
       const index = e.target.getAttribute('data-index'); 
@@ -117,24 +127,27 @@ function displayHistory(){
       calculationType = history[index].calculationType
       equation.setValue(expression)
       options.value = calculationType
-      settingOptionBackground()
+      addingClassToOptions()
       sendData(expression,calculationType)
       toggleSlider('null')
     });
   });
-
 }
 
-options.addEventListener('change',settingOptionBackground)
+
+//Event Listener to set option Background on Click Event
 const optionLinks = document.querySelectorAll('.option-link');
 optionLinks.forEach(link => {
     link.addEventListener('click', function(event) {
         event.preventDefault(); 
         options.value = this.getAttribute('data-option');
-        settingOptionBackground() 
+        addingClassToOptions() 
     });
 });
-function settingOptionBackground() {
+
+//Event listener to set option background when option changes
+options.addEventListener('change',addingClassToOptions)
+function addingClassToOptions() {
   optionLinks.forEach(member => {
     if (member.getAttribute('data-option') === options.value) {
       member.classList.add('option-link-active');
@@ -144,6 +157,14 @@ function settingOptionBackground() {
   });
 }
 
+//Event Listener to toggle the slider
+document.querySelectorAll('.right-slider .option-link').forEach(el => {
+  el.addEventListener('click', (event) => {
+    toggleSlider(event.target, 'none');
+  });
+});
+
+//This Function is used to toggle the slider
 function toggleSlider(direction) {
   const leftSlider = document.getElementById('leftSlider');
   const rightSlider = document.getElementById('rightSlider');
@@ -161,6 +182,7 @@ function toggleSlider(direction) {
   }
 }
 
+//This sets footer anchor click to scroll top 50px below insted of top 0
 document.querySelectorAll('.footer-button a').forEach(link => {
   link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -176,11 +198,11 @@ document.querySelectorAll('.footer-button a').forEach(link => {
       }
   });
 });
+
 // Get the button element
 const toggleButton = document.getElementById("toggleTheme");
 const leftSpan = document.querySelector('.left-span');
 const rightSpan = document.querySelector('.right-span');
-const equationID = document.querySelector('#equation');
 const dropDownMenu = document.querySelector('.dropdown-menu');
 
 // Check localStorage for saved theme preference
@@ -189,23 +211,20 @@ const currentTheme = localStorage.getItem("theme") ||
 // Apply the saved theme on page load
 document.body.classList.add(currentTheme);
 leftSpan.classList.add(currentTheme);
-rightSpan.classList.add(currentTheme);
-equationID.classList.add(currentTheme);
+equation.classList.add(currentTheme);
 dropDownMenu.classList.add(currentTheme);
 // Toggle the theme when the button is clicked
 toggleButton.addEventListener("click", function () {
   if (document.body.classList.contains("dark-mode")) {
     document.body.classList.remove("dark-mode");
     leftSpan.classList.remove("dark-mode");
-     rightSpan.classList.remove("dark-mode");
-     equationID.classList.remove("dark-mode");
+     equation.classList.remove("dark-mode");
      dropDownMenu.classList.remove("dark-mode");
     localStorage.setItem("theme", "light-mode");
   } else {
    document.body.classList.add("dark-mode");
    leftSpan.classList.add("dark-mode");
-   rightSpan.classList.add("dark-mode");
-   equationID.classList.add("dark-mode");
+   equation.classList.add("dark-mode");
    dropDownMenu.classList.add("dark-mode");
     localStorage.setItem("theme", "dark-mode");
 }
