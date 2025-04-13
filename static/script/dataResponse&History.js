@@ -64,7 +64,7 @@ function submitData () {
   const equalCount = (equationValue.match(/=/g) || []).length;
   if (options.value === 'linear1') {
     if (equalCount!==1) {
-      dynamicError('*Please provide expressions in form ax+by+c=0')
+      dynamicError('*Please provide expressions in form ax+b=0')
       return
     }
   }
