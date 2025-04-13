@@ -4,66 +4,94 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="{{ url_for('static', filename='images/icon.jpg') }}" type="image/jpg">
-  <link rel="stylesheet" type="text/css" href="./static/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="./static/css/solver.css" />
   <link rel="stylesheet" type="text/css" href="./static/css/repeated.css" />
   <link rel="stylesheet" href="https://unpkg.com/mathlive/dist/mathlive.core.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <title>BhaskarAcharya</title>
 </head>
 <body>
-  <header>
-    <div class="name">
-      <b class="title-mobile" >BhaskarAcharya </b><b > MathsSolver</b>
+
+  <header class="flex-space-btw">
+
+    <div>
+      <b class="dsply-none-700" >BhaskarAcharya </b><strong> MathsSolver</strong>
     </div>
-    <nav class="head-button">
-      <button id="toggleTheme">
+
+    <nav>
+      <button>
+        <a href="/">Home</a>
+      </button> 
+
+      <button hover-content="Change Theme" id="toggleTheme">
         <i class="fas fa-moon"></i>
       </button>
-      <button class="slider-right-button" onclick="toggleSlider('right');">⋮⋮⋮</button>
-      <button class="slider-left-button" id="historyBtn" onclick="toggleSlider('left'); displayHistory();">History</button>
-      <button><a href="/">Home</a></button>
+
+      <button hover-content="History" class="slider-button" id="historyBtn" onclick="toggleSlider('left'); displayHistory();">
+        <i class="fas fa-history"></i>
+      </button>
+
+      <button hover-content="info" class="slider-button dsply-inline-none" onclick="toggleSlider('right');">
+        ☰
+      </button>
     </nav>   
+
     <div class="slider left-slider" id="leftSlider">
-      <button class="back-button" onclick="toggleSlider('null')">←</button>
-      <button class="close-button" onclick="toggleSlider('null')">✖</button>
-      <div id="history-section" style="margin-bottom: 50px; padding:1px; overflow: hidden;">
+      <div class="sticky-0">
+        <button class="back-button" onclick="toggleSlider('null')" hover-content="back">
+          ←
+        </button>
+        <button class="close-button" onclick="toggleSlider('null')" hover-content="close">
+          ✖
+        </button>
+      </div>
+      <div id="history-section">
         <h2>History of Calculations</h2>
-        <button id="clearHistoryBtn" onclick="clearHistory()">Clear History</button>
+        <button class="button-style" id="clearHistoryBtn" onclick="clearHistory()">
+          Clear History
+        </button>
         <hr>
-        <div id="history-list"></div>
+        <div class="history-list" id="history-list"></div>
       </div>
     </div>
+
     <div class="slider right-slider" id="rightSlider">
-      <button class="back-button" onclick="toggleSlider('null')">←</button>
-      <button class="close-button" onclick="toggleSlider('null')">✖</button>
+      <div class="sticky-0">
+        <button class="back-button" onclick="toggleSlider('null')" hover-content="back">
+          ←
+        </button>
+        <button class="close-button" onclick="toggleSlider('null')" hover-content="close">
+          ✖
+        </button>
+      </div>
       {% include 'optionlink.html' %}
     </div>
   </header>
-  <main>
+
+  <main class="flex-space-btw">
     <span class="left-span">
-      {% include 'optionlink.html' %}
+      <div>
+        {% include 'optionlink.html' %}
+      </div>
     </span>
     
     <span class="right-span">
-        <math-field id="equation" placeholder="Type Maths Problem"></math-field>
-    <div class="input-pane">
-      <div style="display: flex;justify-content: space-between;">
-        <button id="submit">Submit</button>
-        <button id="clear">Clear</button>
-      </div>
-      <select class="dropdown-menu" id="options" name="options">
-          <option value="simple" selected>Simple Calculator</option>
-          <option value="functions">Function with argument</option>
-          <option value="quadratic">Quadratic Equation</option>
-          <option value="linear1">Linear Equation in one variable</option>
-          <option value="linear2">Linear Equation in two variable</option>
-          <option value="linear3">Linear Equation in three variable</option>
-        </select>
-      </div>
-      <div id="dynamic-results"></div>
-      <div class="output-pane">
+        <math-field data-result="" id="equation" placeholder="Type Maths Problem"></math-field>
+      <div class="input-pane flex-space-btw">
+        <div class="flex-space-btw">
+          <button class="button-style" id="submit">Submit</button>
+          <button class="button-style" id="clear">Clear</button>
         </div>
+        <select class="dropdown-menu" id="options" name="options">
+            <option value="simple" selected>Simple Calculator</option>
+            <option value="functions">Function with argument</option>
+            <option value="quadratic">Quadratic Equation</option>
+            <option value="linear1">Linear Equation in one variable</option>
+            <option value="linear2">Linear Equation in two variable</option>
+            <option value="linear3">Linear Equation in three variable</option>
+          </select>
       </div>
+        <div class="output-pane"></div>
       <div class="explaination-pane">
         {% include 'explaination.html' %}
       </div>
@@ -78,8 +106,7 @@
   </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/mathlive@0.104.1/dist/mathlive.min.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./static/script/script.js"></script>
+<script src="./static/script/dataResponse&History.js"></script>
+<script src="./static/script/slider&Sidebar.js"></script>
 </body>
 </html>

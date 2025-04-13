@@ -1,0 +1,132 @@
+body {
+  --keycap-height: 30px;
+  --keycap-font-size: 15px;
+  --keycap-shift-font-size: 15px;
+  --keycap-gap : 0.5px;
+}
+
+#equation::after {
+  margin-left: 10px;
+  font-weight: bolder;
+}
+[error-display]#equation::before {
+  content: attr(error-display);
+  color: red;
+}
+[data-result]#equation::after {
+  content: attr(data-result);
+  color: inherit;
+}
+
+.left-span,.right-span {
+  padding: 5px;
+}
+.left-span{
+  width: 24%;
+}
+.left-span div{
+  position: sticky;
+  top: 40px;
+}
+.right-span {
+  width: 74%;
+}
+
+.history-list{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.dropdown-menu{
+  height: 50px;
+}
+.what-i-do{
+  margin: 10px;
+}
+
+#equation{
+  width: 99%;
+}
+.input-pane{
+  margin: 5px 10px 0px 2px;
+}
+
+.footer-div{
+  width:100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.footer-button:nth-child(odd) {
+  background-color: #FFDDC1;  
+  border: 2px solid #D85C5C; 
+}
+
+.footer-button:nth-child(even) {
+  background-color: #ec5e5e;  
+  border: 2px solid #234a26; 
+}
+
+[data-theme="dark"]  .footer-button:nth-child(odd) {
+  background-color: #261F19;
+  border: 2px solid #D85C5C; 
+}
+
+[data-theme="dark"]  .footer-button:nth-child(even) {
+  background-color: #6f0202; 
+  border: 2px solid #234a26; 
+}
+
+/* Define the loading screen styles */
+.loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(48, 38, 38, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loading-spinner {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dsply-inline-none{
+  display: none;
+}
+@media (width < 700px) {
+  p{
+    font-size: small;
+  }
+  .left-span{
+    display: none;
+  }
+  .right-span{
+    width: 99%;
+    left: 1%;
+  }
+  .dsply-none-700{
+    display: none;
+  }
+  .dsply-inline-none{
+    display: inline;
+  }
+  .input-feild-container{
+    min-height: 100px;
+  }
+  .input-pane{
+    flex-direction: column;
+  }
+}

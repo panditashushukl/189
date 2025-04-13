@@ -1,25 +1,47 @@
+:root{
+  color-scheme: dark;
+}
+
 body{
   margin: 0;
 }
- header{
+
+.flex-space-btw{
   display: flex;
   justify-content: space-between;
-  background-color: lightblue;
-  padding: 5px 1px;
-  position: fixed;
-  width: 100%;
+}
+.center{
+  text-align: center;
+}
+.sticky-0{
+ position: sticky;
+ top: 0;
+}
+main{
+  margin-top: 18px;
+}
+header{
+  background-color: 	#B3B3B3;
+  padding: 5px 10px;
+  position: sticky;
   top: 0;
-  box-shadow: 5px 2px 5px 5px lightblue;
+  box-shadow: 5px 2px 5px 5px 	#B3B3B3;
   z-index: 1;
 }
+[data-theme="dark"]  header{
+  background-color: #757575;
+  box-shadow: 5px 2px 5px 5px #757575;
+}
+
 footer{
-  display: flex;
-  justify-content: space-between;
   position: fixed;
-  width: 100%;
   bottom: 0;
-  background-color: lightblue;
+  width: 100vw;
+  background-color: 	#B3B3B3;
   z-index: 1;
+}
+[data-theme="dark"] footer{
+  background-color: #757575;
 }
 
 button{
@@ -27,9 +49,23 @@ button{
   background: none;
   cursor: pointer;
 }
+button:hover{
+  background-color: #a4b718;
+}
+button:hover::after{
+  content: attr(hover-content);
+}
+a {
+  color:black;     
+  text-decoration: none; 
+}
+[data-theme="dark"] a {
+  color: white
+}
 
+/*Slider */
 .slider {
-  padding-top: 50px;
+  padding-top: 10px;
   position: fixed;
   overflow-y: scroll;
   top: 0;
@@ -39,6 +75,10 @@ button{
   transition: width 0.3s ease;
   z-index: 3;
 }
+[data-theme="dark"] .slider{
+  background-color: #212121;
+}
+
 .left-slider {
   left: 0;
 }
@@ -56,20 +96,46 @@ button{
   color: white;
   padding: 10px;
   border-radius:20%;
-  cursor: pointer;
-  border: none;
-  position:absolute ;
-  top: 5px;
 }
 .close-button{
+  position: absolute;
   right: 5px;
 }
-.back-button{
-  left: 5px;
+
+.button-style{
+  box-shadow: inset 5px 5px 12px #656262, 5px 5px 12px rgba(0, 0, 0, 0.16);
+  border-radius: 10%;
+  padding: 15px;
 }
-.close-button:hover {
-  background-color: #c9302c;
+
+.box-styling{
+  border-radius: 8px;
+  padding: 20px;
+  margin: 5px 0px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #4CAF50;
+  border-bottom: 5px solid;
+  overflow-wrap: break-word;
 }
-.back-button:hover {
-  background-color: #c9302c;
+
+/* Anchor Decoration*/
+.link {
+  display: inline-block;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  padding: 5px;
+}
+.link:hover {
+    background-color: #4CAF50; 
+    color: white; 
+    border-color: #4CAF50;
+    transform: scale(1.05);
+}    
+.link-active {
+  transform: scale(1);
+  background-color: #85dc8a;
+}
+[data-theme="dark"] .link-active {
+  background-color: #0c450f;
 }

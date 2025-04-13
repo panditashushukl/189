@@ -1,86 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" color-scheme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="{{ url_for('static', filename='images/icon.jpg') }}" type="image/jpg">
   <title>𝟙𝟠𝟡</title>
   <link rel="stylesheet" type="text/css" href="./static/css/repeated.css" />
+  <link rel="stylesheet" type="text/css" href="./static/css/home.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <style>
-    .slider{
-      background-color: #212121;
-      color: aliceblue;
-    }
-    main {
-      background-color:  #2C3E50; 
-      height: 100vh;
-      display: flex;
-      font-family: Arial, sans-serif;
-    }
-    .main-div,.right-slider-content {
-      margin: auto;
-      background-color: #67676b;
-      border-radius: 10px;
-      padding: 20px;
-      width: 80%;
-      max-width: 600px;
-      text-align: center;
-      font-size: 1.5em;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    .main-div a,button {
-      text-decoration: none;
-      color: #4CAF50;
-      font-weight: bold;
-    }
-  
-    .main-div a:hover,button:hover {
-      color: #3e8e41;
-    }
-    .world-189 {
-      color: #333;
-    }
-    .world-189 span{
-      color: gold;
-    }
-    .content-1 {
-      display: flex;
-      justify-content: space-between;
-    }
-    .content-col-1,.content-col-2 {
-      width: 47%;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    li {
-      margin: 5px 0;
-    }
-   footer{
-      justify-content: center;
-    }
-    nav {
-      display: flex;
-      justify-content: space-evenly;
-    }
-    @media (max-width: 450px) {
-      .main-div,.right-slider-content {
-        font-size: medium;
-      }
-      nav {
-      display: block;
-      }
-      .content-1{
-        display: block;
-      }
-      .content-col-1,.content-col-2 {
-      width: 97%;
-    }
-    }
-  </style>
-
 <body>
 
     <main>
@@ -105,8 +32,14 @@
     </main>
     
   <div class="slider right-slider" id="rightSlider">
-    <button class="back-button" onclick="toggleSlider('null')">←</button>
-    <button class="close-button" onclick="toggleSlider('null')">✖</button>
+    <div class="sticky-0">
+      <button class="back-button" onclick="toggleSlider('null')" hover-content="back">
+        ←
+      </button>
+      <button class="close-button" onclick="toggleSlider('null')" hover-content="close">
+        ✖
+      </button>
+    </div>
     <div class="slider-content right-slider-content">
     <h2>Developed by ASHUTOSH SHUKLA</h2>
     <hr>
@@ -121,10 +54,16 @@
    </div>
   </div>
   <div class="slider left-slider" id="leftSlider">
-    <button class="back-button" onclick="toggleSlider('null')">←</button>
-    <button class="close-button" onclick="toggleSlider('null')">✖</button>
+    <div class="sticky-0">
+      <button class="back-button" onclick="toggleSlider('null')" hover-content="back">
+        ←
+      </button>
+      <button class="close-button" onclick="toggleSlider('null')" hover-content="close">
+        ✖
+      </button>
+    </div>
     <div class="slider-content">
-      <div class="content-1">
+      <div class="flex-space-btw">
         <div class="content-col-1">
           <h2>About both Models</h2>
           <p style="font-size: large;">
@@ -144,9 +83,9 @@
       {% include 'explaination.html'%}
     </div>
   </div>
-  <footer>
+  <footer class="center">
       Developer: ASHUTOSH SHUKLA
   </footer>
-  <script src="./static/script/script.js"></script>
+  <script src="./static/script/slider&Sidebar.js"></script>
 </body>
 </html>
