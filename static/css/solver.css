@@ -30,6 +30,7 @@ body {
 }
 .right-span {
   width: 74%;
+  overflow: auto;
 }
 
 .history-list{
