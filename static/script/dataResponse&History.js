@@ -183,3 +183,25 @@ function displayHistory(){
     });
   });
 }
+
+//Event Listener to set option Background on Click Event
+const optionLinks = document.querySelectorAll('.link');
+optionLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        options.value = this.getAttribute('data-option');
+        addingClassToOptions() 
+    });
+});
+
+//Event listener to set option background when option changes
+options.addEventListener('change',addingClassToOptions)
+function addingClassToOptions() {
+  optionLinks.forEach(member => {
+    if (member.getAttribute('data-option') === options.value) {
+      member.classList.add('link-active');
+    } else {
+      member.classList.remove('link-active');
+    }
+  });
+}

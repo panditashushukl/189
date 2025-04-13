@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" color-scheme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,7 +80,12 @@
         </div>
       </div>
       <h2>Highlight of the Website</h2>
-      {% include 'explaination.html'%}
+      <div class="explaination-pane">
+        <button hover-content="Change Theme" id="toggleTheme">
+          <i class="fas fa-moon"></i>
+        </button>
+        {% include 'explaination.html' %}
+      </div>
     </div>
   </div>
   <footer class="center">
