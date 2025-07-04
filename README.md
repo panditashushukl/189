@@ -5,6 +5,11 @@ A web-based math solver that provides step-by-step solutions, graphs, and explan
   
 **[View Live Demo](https://mathssolver.vercel.app/)**
 
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
+
+
 ## Features
 
 - **Simple Calculator:** Evaluate arithmetic and complex expressions.
