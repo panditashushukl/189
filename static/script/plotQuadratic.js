@@ -45,10 +45,9 @@ function plotQuadratic(plot_info, plot_array,expression) {
   ];
   
 
-  let data = [trace, ...markers2];
-  console.log(plot_info.root1.real, plot_info.root2.real);
+  let data;
   
-  if (plot_info.root1.real && plot_info.root2.real) {
+  if (plot_info.root1.imag == 0 && plot_info.root2.imag == 0 ) {
     data = [trace, ...markers1, ...markers2];
   } else {
     data = [trace, ...markers2];

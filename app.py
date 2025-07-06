@@ -26,8 +26,7 @@ def process_calculation(data):
             img_data = plot_on_graph(result)
 
         elif calculation_type == "quadratic":
-            result = solve_quadratic(expression)
-            return result
+            return solve_quadratic(expression)
 
         elif calculation_type == "functions":
             result, steps, _ = function_with_arg(expression)

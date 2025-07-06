@@ -85,6 +85,8 @@ def find_roots(a, b, c):
     return root1, root2, vertex, x, y, c
 
 def solution(equation):
+    global steps
+    steps = "" 
     try:
         left, right = convert_to_default_format(equation)
         a, b, c, var = extract_coefficients(left)
@@ -93,15 +95,13 @@ def solution(equation):
             a -= d
             b -= e 
             c -= f
-        global steps
         steps += f"Input Equation : ({a}){var}^2+({b}){var}+({c})=0\n"
         return find_roots(a, b, c),var,steps
     except Exception as e:
         return f"Error: {str(e)}"
     
 def solve_quadratic(equation):
-    ans = solution(equation)
-    ((root1,root2,vertex,x,y,c),var,steps) = ans
+    ((root1,root2,vertex,x,y,c),var,steps) = solution(equation)
     result = {
         "result" :f"Roots: {root1}, {root2}\n Vertex: {vertex}\n Y-Intercept: {c}",
         "steps": steps,
