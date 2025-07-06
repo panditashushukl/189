@@ -18,33 +18,37 @@ equation.addEventListener('input', function () {
 })
 
 //Send Data To Server
-function sendData(expression, calculationType){
-  const formData = new URLSearchParams();
-  formData.append('userInput', expression);
-  formData.append('calculationType', calculationType);
+function sendData(expression, calculationType) {
+  const data = {
+    userInput: expression,
+    calculationType: calculationType
+  };
 
   fetch('/BhaskarAcharya', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded', 
+      'Content-Type': 'application/json',
     },
-    body: formData.toString()
+    body: JSON.stringify(data)  // Send JSON directly
   })
   .then(response => response.json())
-  .then(data => {
-    printData(data,expression)
-    setHistory(data.result,expression)
+  .then(data => {    
+    printData(data, expression);
+    setHistory(data.result, expression);
     equation.setAttribute('data-result', '');
     if (equation.hasAttribute('error-display')) {
       equation.removeAttribute('error-display');
     }
-    output.style.display = 'block'
+    output.style.display = 'block';
+    if (data.plot_info && data.plot_array) {
+      plotQuadratic(data.plot_info, data.plot_array,expression);
+    }
   })
   .catch(error => {
-    printError(error)
-  });  
-  
+    printError(error);
+  });
 }
+
 
 function dynamicError(str) {
   equation.setAttribute('error-display', str)
@@ -127,11 +131,14 @@ function printData(data,expression){
       <b>Step-by-step Solution:</b><br><br> 
       ${data.steps.replace(/\n/g, '<br>')} 
     </div>
+  `
+  if (data.graph){
+    output.innerHTML += `
     <div class="box-styling" id="graphContent">
-      <b>Graph:</b><br><br>
       <img src=data:image/png;base64,${data.graph}  alt="Graph" style="width: 100%; max-width: 600px;"> 
     </div>
-  `
+    `
+  }
 }
 
 //If Error Occurred this function prints error

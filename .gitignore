@@ -1,1 +1,8 @@
+# Vercel
 .vercel
+
+# VS Code
+.vscode/
+
+# Byte-compiled / optimized / DLL files
+maths_utils/__pycache__/
