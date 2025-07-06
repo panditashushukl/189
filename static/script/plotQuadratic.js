@@ -53,14 +53,17 @@ function plotQuadratic(plot_info, plot_array,expression) {
     data = [trace, ...markers2];
   }
   const layout = {
-    title: `Quadratic Equation Plot : ${expression}`,
-    xaxis: { title: plot_info.variable },
-    yaxis: { title: 'y' },
-    showlegend: true
+    title: `Plot : ${expression}`,
+    showlegend: true,
+    legend: {
+      orientation: "h",
+    },
+    height:600,
+    autosize: true,
   };
 
   output.innerHTML += `
-    <div class="box-styling" id="graph-plot"></div>
+    <div class="box-styling" id="graphContent" style="width:100%;"></div>
     `
-  Plotly.newPlot('graph-plot', data, layout);
+  Plotly.newPlot('graphContent', data, layout);
 }
