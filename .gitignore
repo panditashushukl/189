@@ -6,3 +6,5 @@
 
 # Byte-compiled / optimized / DLL files
 maths_utils/__pycache__/
+
+maths_utils/test/

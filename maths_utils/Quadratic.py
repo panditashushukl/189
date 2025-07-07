@@ -96,12 +96,12 @@ def solution(equation):
             b -= e 
             c -= f
         steps += f"Input Equation : ({a}){var}^2+({b}){var}+({c})=0\n"
-        return find_roots(a, b, c),var,steps
+        return find_roots(a, b, c),var,steps,(a,b,c)
     except Exception as e:
         return f"Error: {str(e)}"
     
 def solve_quadratic(equation):
-    ((root1,root2,vertex,x,y,c),var,steps) = solution(equation)
+    ((root1,root2,vertex,x,y,c),var,steps,(a,b,c)) = solution(equation)
     result = {
         "result" :f"Roots: {root1}, {root2}\n Vertex: {vertex}\n Y-Intercept: {c}",
         "steps": steps,
@@ -110,7 +110,8 @@ def solve_quadratic(equation):
             "root2": {"real": root2.real, "imag": root2.imag},
             "variable": var,
             "vertex": vertex,
-            "y_intercept": c
+            "y_intercept": c,
+            "abc":[a,b,c]
         },
         "plot_array" : {"x": x, "y": y,},
     }
